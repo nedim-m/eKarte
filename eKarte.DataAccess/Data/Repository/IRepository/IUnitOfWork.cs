@@ -6,6 +6,10 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
 {
    public interface IUnitOfWork:IDisposable
     {
+        ISpolRepository Spol { get; }
+        ITipOsobljaRepository TipOsoblja { get; }
+        IOsobljeRepository Osoblje { get; }
+
 
         void Save();
     }

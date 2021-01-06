@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
@@ -20,15 +21,17 @@ namespace eKarte.Models
         public string Telefon { get; set; }
         [Required]
         public string JMBG { get; set; }
+        [DisplayName("Datum Rođenja")]
         public DateTime DatumRodjenja { get; set; }
+        [DisplayName("Datum Zaposlenja")]
         public DateTime DatumZaposljenja { get; set; }
         public string Opis { get; set; }
 
-
+        [DisplayName("Tip osoblja")]
         public int TipOsobljaId { get; set; }
 
         public virtual TipOsoblja TipOsoblja { get; set; }
-
+        [DisplayName("Spol")]
         public int SpolId { get; set; }
 
         public virtual Spol Spol { get; set; }

@@ -11,12 +11,17 @@ namespace eKarte.DataAccess.Data.Repository
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            Spol = new SpolRepository(_db);
+            TipOsoblja = new TipOsobljaRepository(_db);
+            Osoblje = new OsobljeRepository(_db);
         }
-        
-        
-        
-        
-        
+
+        public ISpolRepository Spol { get;  }
+
+        public ITipOsobljaRepository TipOsoblja { get; private set; }
+
+        public IOsobljeRepository Osoblje { get; private set; }
+
         public void Dispose()
         {
             _db.Dispose();
