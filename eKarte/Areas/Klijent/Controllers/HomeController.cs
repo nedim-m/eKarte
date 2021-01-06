@@ -9,6 +9,7 @@ using eKarte.Models;
 
 namespace eKarte.Controllers
 {
+    [Area("Klijent")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
