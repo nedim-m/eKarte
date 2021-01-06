@@ -9,6 +9,7 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
         ISpolRepository Spol { get; }
         ITipOsobljaRepository TipOsoblja { get; }
         IOsobljeRepository Osoblje { get; }
+        IAerodromRepository Aerodrom { get; }
 
 
         void Save();
