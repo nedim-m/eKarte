@@ -17,5 +17,10 @@ namespace eKarte.DataAccess.Data
         public DbSet<Spol> Spol { get; set; }
         public DbSet<TipOsoblja> TipOsoblja { get; set; }
         public DbSet<Osoblje> Osoblje { get; set; }
+        public DbSet<Drzava> Drzava { get; set; }
+        public DbSet<Grad> Grad { get; set; }
+        public DbSet<Aerodrom> Aerodrom { get; set; }
+
+
     }
 }
