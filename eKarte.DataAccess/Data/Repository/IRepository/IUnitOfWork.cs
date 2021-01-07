@@ -11,6 +11,7 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
         IOsobljeRepository Osoblje { get; }
         IAerodromRepository Aerodrom { get; }
         IDrzavaRepository Drzava { get; }
+        IGradRepository Grad { get; }
 
         void Save();
     }
