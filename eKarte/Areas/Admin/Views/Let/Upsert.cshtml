@@ -1,0 +1,109 @@
+﻿@model eKarte.Models.ViewModels.LetViewModel
+
+@{
+    var title = "Dodaj Let";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Upsert">
+
+    <div class="row px-2 mx-2  border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Let.Id != 0)
+        {
+            <input type="hidden" asp-for="Let.Id" />
+            title = "Edit Leta";
+        }
+
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-9">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Let.Naziv"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Let.Naziv" class="form-control" />
+                    <span asp-validation-for="Let.Naziv" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Let.AvionId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Let.AvionId, Model.AvionLista,
+                                            "- Unesite Avion -", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Let.DatumLeta"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Let.DatumLeta" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Let.DatumLeta" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Let.VrijemeLeta"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Let.VrijemeLeta" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Let.VrijemeLeta" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Let.AerodromOdId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Let.AerodromOdId, Model.AerodromOdLista,
+                                            "- Unesite polazak -", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Let.AerodromDoId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Let.AerodromDoId, Model.AerodromDoLista,
+                                            "- Unesite destinaciju -", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Let.Id != 0)
+                    {
+
+                        <partial name="_EditAndBackToListButton" model="Model.Let.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+

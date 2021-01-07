@@ -19,6 +19,7 @@ namespace eKarte.DataAccess.Data.Repository
             Grad = new GradRepository(_db);
             Kompanija = new KompanijaRepository(_db);
             Avion = new AvionRepository(_db);
+            Let = new LetRepository(_db);
         }
 
         public ISpolRepository Spol { get;  }
@@ -31,6 +32,9 @@ namespace eKarte.DataAccess.Data.Repository
         public IGradRepository Grad { get; private set; }
         public IKompanijaRepository Kompanija { get; private set; }
         public IAvionRepository Avion { get; private set; }
+
+        public ILetRepository Let { get; private set; }
+
         public void Dispose()
         {
             _db.Dispose();
