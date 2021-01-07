@@ -12,6 +12,8 @@ namespace eKarte.Models
         public string Model { get; set; }
         public int GodinaProizvodnje { get; set; }
         public int Kapacitet { get; set; }
+        public int KompanijaId { get; set; }
+        public virtual Kompanija Kompanija { get; set; }
 
     }
 }
