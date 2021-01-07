@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eKarte.DataAccess.Data;
 
 namespace eKarte.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210107135519_updateAvionaAerodrom")]
+    partial class updateAvionaAerodrom
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,9 +257,6 @@ namespace eKarte.DataAccess.Migrations
                     b.Property<int>("Kapacitet")
                         .HasColumnType("int");
 
-                    b.Property<int>("KompanijaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
@@ -268,8 +267,6 @@ namespace eKarte.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("KompanijaId");
 
                     b.ToTable("Avion");
                 });
@@ -531,15 +528,6 @@ namespace eKarte.DataAccess.Migrations
                     b.HasOne("eKarte.Models.Grad", "Grad")
                         .WithMany()
                         .HasForeignKey("GradId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("eKarte.Models.Avion", b =>
-                {
-                    b.HasOne("eKarte.Models.Kompanija", "Kompanija")
-                        .WithMany()
-                        .HasForeignKey("KompanijaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

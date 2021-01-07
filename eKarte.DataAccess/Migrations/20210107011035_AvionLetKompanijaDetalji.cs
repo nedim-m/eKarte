@@ -59,19 +59,19 @@ namespace eKarte.DataAccess.Migrations
                         column: x => x.AerodromDoId,
                         principalTable: "Aerodrom",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Let_Aerodrom_AerodromOdId",
                         column: x => x.AerodromOdId,
                         principalTable: "Aerodrom",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Let_Avion_AvionId",
                         column: x => x.AvionId,
                         principalTable: "Avion",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(

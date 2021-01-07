@@ -10,8 +10,8 @@ using eKarte.DataAccess.Data;
 namespace eKarte.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210106214136_m1")]
-    partial class m1
+    [Migration("20210107135806_Update Aviona")]
+    partial class UpdateAviona
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,6 +221,172 @@ namespace eKarte.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("eKarte.Models.Aerodrom", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GradId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Naziv")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sifra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GradId");
+
+                    b.ToTable("Aerodrom");
+                });
+
+            modelBuilder.Entity("eKarte.Models.Avion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GodinaProizvodnje")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Kapacitet")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KompanijaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Naziv")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Proizvodjac")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KompanijaId");
+
+                    b.ToTable("Avion");
+                });
+
+            modelBuilder.Entity("eKarte.Models.DetaljiLeta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OsobljeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LetId");
+
+                    b.HasIndex("OsobljeId");
+
+                    b.ToTable("DetaljiLeta");
+                });
+
+            modelBuilder.Entity("eKarte.Models.Drzava", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Naziv")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Drzava");
+                });
+
+            modelBuilder.Entity("eKarte.Models.Grad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DrzavaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Naziv")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DrzavaId");
+
+                    b.ToTable("Grad");
+                });
+
+            modelBuilder.Entity("eKarte.Models.Kompanija", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Adresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Naziv")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Kompanija");
+                });
+
+            modelBuilder.Entity("eKarte.Models.Let", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AerodromDoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AerodromOdId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AvionId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DatumLeta")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VrijemeLeta")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AerodromDoId");
+
+                    b.HasIndex("AerodromOdId");
+
+                    b.HasIndex("AvionId");
+
+                    b.ToTable("Let");
+                });
+
             modelBuilder.Entity("eKarte.Models.Osoblje", b =>
                 {
                     b.Property<int>("Id")
@@ -358,6 +524,69 @@ namespace eKarte.DataAccess.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eKarte.Models.Aerodrom", b =>
+                {
+                    b.HasOne("eKarte.Models.Grad", "Grad")
+                        .WithMany()
+                        .HasForeignKey("GradId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eKarte.Models.Avion", b =>
+                {
+                    b.HasOne("eKarte.Models.Kompanija", "Kompanija")
+                        .WithMany()
+                        .HasForeignKey("KompanijaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eKarte.Models.DetaljiLeta", b =>
+                {
+                    b.HasOne("eKarte.Models.Let", "Let")
+                        .WithMany()
+                        .HasForeignKey("LetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eKarte.Models.Osoblje", "Osoblje")
+                        .WithMany()
+                        .HasForeignKey("OsobljeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eKarte.Models.Grad", b =>
+                {
+                    b.HasOne("eKarte.Models.Drzava", "Drzava")
+                        .WithMany()
+                        .HasForeignKey("DrzavaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eKarte.Models.Let", b =>
+                {
+                    b.HasOne("eKarte.Models.Aerodrom", "AerodromDo")
+                        .WithMany()
+                        .HasForeignKey("AerodromDoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eKarte.Models.Aerodrom", "AerodromOd")
+                        .WithMany()
+                        .HasForeignKey("AerodromOdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eKarte.Models.Avion", "Avion")
+                        .WithMany()
+                        .HasForeignKey("AvionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
