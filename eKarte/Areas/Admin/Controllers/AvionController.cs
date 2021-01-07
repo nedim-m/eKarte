@@ -3,82 +3,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eKarte.DataAccess.Data.Repository.IRepository;
-using eKarte.Models;
 using eKarte.Models.ViewModels;
+using eKarte.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eKarte.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class GradController : Controller
+    public class AvionController : Controller
     {
-        
         private readonly IUnitOfWork _unitOfWork;
-        public GradController(IUnitOfWork unitOfWork)
+        public AvionController(IUnitOfWork unitOfWork)
         {
-            
             _unitOfWork = unitOfWork;
         }
         [BindProperty]
-        public GradViewModel GradVM { get; set; }
-
+        public AvionViewModel AvionVM { get; set; }
         public IActionResult Upsert(int? id)
         {
-            GradVM = new GradViewModel()
+            AvionVM = new AvionViewModel()
             {
-                Grad = new Models.Grad(),
-                DrzavaLista = _unitOfWork.Drzava.GetListForDropdown()
-                
+                Avion = new Models.Avion(),
+                ListaKompanija = _unitOfWork.Kompanija.GetListForDropdown()
             };
             if (id != null)
             {
-                GradVM.Grad = _unitOfWork.Grad.Get(id.GetValueOrDefault());
+                AvionVM.Avion = _unitOfWork.Avion.Get(id.GetValueOrDefault());
             }
-            return View(GradVM);
+            return View(AvionVM);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Upsert()
         {
             if (ModelState.IsValid)
             {
-                if (GradVM.Grad.Id == 0)
+                if (AvionVM.Avion.Id == 0)
                 {
-                    _unitOfWork.Grad.Add(GradVM.Grad);
+                    _unitOfWork.Avion.Add(AvionVM.Avion);
                 }
                 else
                 {
-                    _unitOfWork.Grad.Update(GradVM.Grad);
+                    _unitOfWork.Avion.Update(AvionVM.Avion);
                 }
                 _unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                GradVM.DrzavaLista = _unitOfWork.Drzava.GetListForDropdown();
-                
-                return View(GradVM);
+                AvionVM.ListaKompanija = _unitOfWork.Kompanija.GetListForDropdown();
+                return View(AvionVM);
             }
+            
         }
-        #region API CALLS
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Grad.GetAll(includeProperties:"Drzava") });
+            return Json(new { data = _unitOfWork.Avion.GetAll(includeProperties: "Kompanija") });
         }
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.Grad.Get(id);
+            var objFromDb = _unitOfWork.Avion.Get(id);
             if (objFromDb == null)
             {
-                return Json(new { success = false, message = "Error while deleting" });
+                return Json(new { success = false, message = StaticData.ErrorMessage });
             }
-            _unitOfWork.Grad.Remove(objFromDb);
+            _unitOfWork.Avion.Remove(objFromDb);
             _unitOfWork.Save();
-            return Json(new { success = true, message = "Delete successfull." });
+            return Json(new { success = true, message = StaticData.SuccessMessage });
         }
-        #endregion
         public IActionResult Index()
         {
             return View();
