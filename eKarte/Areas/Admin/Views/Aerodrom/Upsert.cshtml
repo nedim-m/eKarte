@@ -1,54 +1,71 @@
-﻿@model eKarte.Models.Aerodrom
+﻿@model eKarte.Models.ViewModels.AerodromViewModel
 
 @{
-    var title = "Dodaj Tip";
-    Layout = "~/Views/shared/_Layout.cshtml";
+    var title = "Dodaj aerodrom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <form method="post" asp-action="Upsert">
 
-    <div class="row px-2 mx-2 border">
+    <div class="row px-2 mx-2  border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Id != 0)
+        @if (Model.Aerodrom.Id != 0)
         {
-            <input type="hidden" asp-for="Id" />
-            title = "Edit Tipova";
+            <input type="hidden" asp-for="Aerodrom.Id" />
+            title = "Edit aerodrom";
         }
 
         <div class="col-12">
             <h2 class="text-primary">@title</h2>
             <br />
         </div>
-        <div class="col-8">
+        <div class="col-9">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Naziv"></label>
+                    <label asp-for="Aerodrom.Naziv"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Naziv" class="form-control" />
-                    <span asp-validation-for="Naziv" class="text-danger"></span>
+                    <input asp-for="Aerodrom.Naziv" class="form-control" />
+                    <span asp-validation-for="Aerodrom.Naziv" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Sifra"></label>
+                    <label asp-for="Aerodrom.Sifra"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Sifra" class="form-control" />
-                    <span asp-validation-for="Sifra" class="text-danger"></span>
+                    <input asp-for="Aerodrom.Sifra" class="form-control" />
+                    <span asp-validation-for="Aerodrom.Sifra" class="text-danger"></span>
                 </div>
             </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Aerodrom.GradId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Aerodrom.GradId, Model.ListaGradova,
+                                            "- Molimo izaberite grad -", new { @class = "form-control" })
+                </div>
+            </div>
+
+
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    @if (Model.Id != 0)
+                    @if (Model.Aerodrom.Id != 0)
                     {
 
-                        <partial name="_EditAndBackToListButton" model="Model.Id" />
+                        <partial name="_EditAndBackToListButton" model="Model.Aerodrom.Id" />
                     }
                     else
                     {
-
-                        <partial name="_CreateAndBackToListButton" />
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
                     }
                 </div>
             </div>
@@ -57,3 +74,8 @@
     </div>
 
 </form>
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+
+}

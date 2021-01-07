@@ -8,25 +8,26 @@ function loadDataTable() {
 
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/admin/aerodrom/GetAll",
+            "url": "/admin/kompanija/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
             { "data": "naziv", "width": "20%" },
-            { "data": "sifra", "width": "20%" },
-            { "data": "grad.naziv", "width": "35%" },
+            { "data": "adresa", "width": "20%" },
+            { "data": "telefon", "width": "35%" },
 
+           
             {
                 "data": "id",
                 "render": function (data) {
                     return ` <div class="text-center">
                                
-                                <a href="/Admin/aerodrom/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
+                                <a href="/Admin/kompanija/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-edit'></i> Edit
                                 </a>
                                     &nbsp;
-                                <a onclick=Delete("/Admin/aerodrom/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
+                                <a onclick=Delete("/Admin/kompanija/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-trash-alt'></i> Delete
                                 </a>
                             </div>

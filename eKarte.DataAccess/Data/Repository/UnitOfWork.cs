@@ -17,6 +17,7 @@ namespace eKarte.DataAccess.Data.Repository
             Aerodrom = new AerodromRepository(_db);
             Drzava = new DrzavaRepository(_db);
             Grad = new GradRepository(_db);
+            Kompanija = new KompanijaRepository(_db);
         }
 
         public ISpolRepository Spol { get;  }
@@ -27,6 +28,7 @@ namespace eKarte.DataAccess.Data.Repository
         public IAerodromRepository Aerodrom { get; private set; }
         public IDrzavaRepository Drzava { get; private set; }
         public IGradRepository Grad { get; private set; }
+        public IKompanijaRepository Kompanija { get; private set; }
         public void Dispose()
         {
             _db.Dispose();

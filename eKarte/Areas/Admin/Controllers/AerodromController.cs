@@ -4,64 +4,66 @@ using System.Linq;
 using System.Threading.Tasks;
 using eKarte.DataAccess.Data.Repository.IRepository;
 using eKarte.Models;
+using eKarte.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eKarte.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class AerodromController : Controller
-    {
-        
-        private readonly IUnitOfWork _unitOfWork;
-
+    public class AerodromController:Controller
+    { 
+    private readonly IUnitOfWork _unitOfWork;
         public AerodromController(IUnitOfWork unitOfWork)
         {
             
             _unitOfWork = unitOfWork;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+        [BindProperty]
+        public AerodromViewModel AerodromVM { get; set; }
+
         public IActionResult Upsert(int? id)
         {
-            Aerodrom aerodrom = new Aerodrom();
-            if (id == null)
+            AerodromVM = new AerodromViewModel()
             {
-                return View(aerodrom);
-            }
-            aerodrom = _unitOfWork.Aerodrom.Get(id.GetValueOrDefault());
-            if (aerodrom == null)
+                Aerodrom = new Models.Aerodrom(),
+                ListaGradova=_unitOfWork.Grad.GetListForDropdown()
+                
+            };
+            if (id != null)
             {
-                return NotFound();
+                AerodromVM.Aerodrom = _unitOfWork.Aerodrom.Get(id.GetValueOrDefault());
             }
-            return View(aerodrom);
-
+            return View(AerodromVM);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Aerodrom aerodrom)
+        public IActionResult Upsert()
         {
             if (ModelState.IsValid)
             {
-                if (aerodrom.Id == 0)
+                if (AerodromVM.Aerodrom.Id == 0)
                 {
-                    _unitOfWork.Aerodrom.Add(aerodrom);
+                    _unitOfWork.Aerodrom.Add(AerodromVM.Aerodrom);
                 }
                 else
                 {
-                    _unitOfWork.Aerodrom.Update(aerodrom);
+                    _unitOfWork.Aerodrom.Update(AerodromVM.Aerodrom);
                 }
                 _unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
-
             }
-            return View(aerodrom);
+            else
+            {
+                AerodromVM.ListaGradova = _unitOfWork.Grad.GetListForDropdown();
+                
+                return View(AerodromVM);
+            }
         }
         #region API CALLS
+        [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Aerodrom.GetAll() });
+            return Json(new { data = _unitOfWork.Aerodrom.GetAll(includeProperties:"Grad") });
         }
         [HttpDelete]
         public IActionResult Delete(int id)
@@ -69,14 +71,16 @@ namespace eKarte.Areas.Admin.Controllers
             var objFromDb = _unitOfWork.Aerodrom.Get(id);
             if (objFromDb == null)
             {
-                return Json(new { succes = false, message = "Error while deleting" });
+                return Json(new { success = false, message = "Error while deleting" });
             }
             _unitOfWork.Aerodrom.Remove(objFromDb);
             _unitOfWork.Save();
             return Json(new { success = true, message = "Delete successfull." });
         }
         #endregion
-
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }
