@@ -20,6 +20,10 @@ namespace eKarte.DataAccess.Data
         public DbSet<Drzava> Drzava { get; set; }
         public DbSet<Grad> Grad { get; set; }
         public DbSet<Aerodrom> Aerodrom { get; set; }
+        public DbSet<Let> Let { get; set; }
+        public DbSet<Avion> Avion { get; set; }
+        public DbSet<Kompanija> Kompanija { get; set; }
+        public DbSet<DetaljiLeta> DetaljiLeta { get; set; }
 
 
     }
