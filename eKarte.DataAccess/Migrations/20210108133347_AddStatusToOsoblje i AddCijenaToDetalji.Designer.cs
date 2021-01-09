@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eKarte.DataAccess.Data;
 
 namespace eKarte.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210108133347_AddStatusToOsoblje i AddCijenaToDetalji")]
+    partial class AddStatusToOsobljeiAddCijenaToDetalji
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -284,6 +286,9 @@ namespace eKarte.DataAccess.Migrations
                     b.Property<int>("LetId")
                         .HasColumnType("int");
 
+                    b.Property<double>("OsnovnaCijenaLeta")
+                        .HasColumnType("float");
+
                     b.Property<int>("OsobljeId")
                         .HasColumnType("int");
 
@@ -374,9 +379,6 @@ namespace eKarte.DataAccess.Migrations
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("OsnovnaCijenaLeta")
-                        .HasColumnType("float");
 
                     b.Property<string>("VrijemeLeta")
                         .IsRequired()

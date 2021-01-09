@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace eKarte.Models
@@ -13,5 +14,8 @@ namespace eKarte.Models
 
         public int LetId { get; set; }
         public virtual Let Let { get; set; }
+
+       
+
     }
 }

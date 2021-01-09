@@ -31,6 +31,7 @@ namespace eKarte.Areas.Admin.Controllers
         {
             OsobljeVM = new OsobljeViewModel()
             {
+
                 Osoblje = new Models.Osoblje(),
                 SpolLista = _unitOfWork.Spol.GetSpolListForDropDown(),
                 TipOsobljaLista = _unitOfWork.TipOsoblja.GetTipOsobljaListForDropDown()
@@ -50,7 +51,9 @@ namespace eKarte.Areas.Admin.Controllers
             {
                 if (OsobljeVM.Osoblje.Id == 0)
                 {
+                    OsobljeVM.Osoblje.Status = StaticData.StatusSlobodno;
                     _unitOfWork.Osoblje.Add(OsobljeVM.Osoblje);
+                    
                 }
                 else
                 {

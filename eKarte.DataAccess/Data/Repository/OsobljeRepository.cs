@@ -29,5 +29,7 @@ namespace eKarte.DataAccess.Data.Repository
             obj.Email = osoblje.Email;
             _db.SaveChanges();
         }
+
+        
     }
 }

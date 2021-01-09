@@ -5,10 +5,8 @@ using System.Text;
 
 namespace eKarte.DataAccess.Data.Repository.IRepository
 {
-    public interface IOsobljeRepository:IRepository<Osoblje>
+    public interface IDetaljiLetaRepository:IRepository<DetaljiLeta>
     {
-        void Update(Osoblje osoblje);
-
-        
+       
     }
 }

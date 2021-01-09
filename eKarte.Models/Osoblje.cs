@@ -36,5 +36,7 @@ namespace eKarte.Models
 
         public virtual Spol Spol { get; set; }
 
+        public string Status { get; set; }
+
     }
 }

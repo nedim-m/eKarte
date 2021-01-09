@@ -29,9 +29,13 @@ namespace eKarte.Models
         [DisplayName("Avion")]
         public int AvionId { get; set; }
         public virtual Avion Avion { get; set; }
-        [Required]
         
+        
+        [Required]
         public string Naziv { get; set; }
+
+        [Required]
+        public double OsnovnaCijenaLeta { get; set; }
 
 
 

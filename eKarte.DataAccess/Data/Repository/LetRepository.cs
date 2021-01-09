@@ -23,6 +23,7 @@ namespace eKarte.DataAccess.Data.Repository
             obj.AerodromOdId = let.AerodromOdId;
             obj.AvionId = let.AvionId;
             obj.Naziv = let.Naziv;
+            obj.OsnovnaCijenaLeta = let.OsnovnaCijenaLeta;
             _db.SaveChanges();
 
         }

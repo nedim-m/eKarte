@@ -13,8 +13,8 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "naziv", "width": "25%" },
-            { "data": "datumLeta", "width": "20%" },
+            { "data": "naziv", "width": "15%" },
+            { "data": "datumLeta", "width": "15%" },
             { "data": "aerodromOd.naziv", "width": "15%" },
             { "data": "aerodromDo.naziv", "width": "15%" },
 
@@ -26,16 +26,20 @@ function loadDataTable() {
                                 <a href="/Admin/let/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-edit'></i> Edit
                                 </a>
-                                  
-                                    &nbsp;
+                                     &nbsp;
                                 <a onclick=Delete("/Admin/let/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-trash-alt'></i> Delete
                                 </a>
+                                <a href="/Admin/detaljiLeta/Index/${data}" class='btn btn-info text-white' style='cursor:pointer;width:100px;'>
+                                                                    Posada              
+                                </a>
+                                  
+                                   
                             </div>
                          `;
 
 
-                }, "width": "30%"
+                }, "width": "40%"
 
             }
         ],
