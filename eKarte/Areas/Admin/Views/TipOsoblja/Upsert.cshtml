@@ -1,4 +1,5 @@
 ﻿@model eKarte.Models.TipOsoblja
+@using eKarte.Utility
 
 @{
     var title = "Dodaj Tip";
@@ -29,7 +30,7 @@
                     <span asp-validation-for="Naziv" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group row">
+            @*<div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Oznaka"></label>
                 </div>
@@ -37,17 +38,28 @@
                     <input asp-for="Oznaka" class="form-control" />
                     <span asp-validation-for="Oznaka" class="text-danger"></span>
                 </div>
+            </div>*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Oznaka"></label>
+                </div>
+                <div class="col-8">
+                    <input type="radio" name="oznaka" asp-for="Oznaka" value="@StaticData.OznakaAvion" /> Avion
+                    <input type="radio" name="oznaka" asp-for="Oznaka" value="@StaticData.OznakaBus"  /> Bus
+                    <span asp-validation-for="Oznaka" class="text-danger"></span>
+                </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-8 offset-4">
                     @if (Model.Id != 0)
                     {
-                        
+
                         <partial name="_EditAndBackToListButton" model="Model.Id" />
                     }
                     else
                     {
-                        
+
                         <partial name="_CreateAndBackToListButton" />
                     }
                 </div>

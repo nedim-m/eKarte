@@ -59,8 +59,8 @@ function loadDataTable2() {
         "columns": [
             { "data": "osoblje.ime", "width": "20%" },
             { "data": "osoblje.prezime", "width": "20%" },
-            { "data": "osoblje.tipOsobljaId", "width": "20%" },
-            { "data": "osoblje.spolId", "width": "20%" },
+            { "data": "osoblje.tipOsoblja.naziv", "width": "20%" },
+            { "data": "osoblje.spol.naziv", "width": "20%" },
 
             {
                 "data": "id",

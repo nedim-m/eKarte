@@ -10,7 +10,7 @@ namespace eKarte.Models
         public int Id { get; set; }
         [Required]
         public string Naziv { get; set; }
-
+        [Required]
         public string Oznaka { get; set; }
     }
 }

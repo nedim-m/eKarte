@@ -24,6 +24,7 @@ namespace eKarte.DataAccess.Data.Repository
             obj.AvionId = let.AvionId;
             obj.Naziv = let.Naziv;
             obj.OsnovnaCijenaLeta = let.OsnovnaCijenaLeta;
+            obj.BrojPosadeNaletu = let.BrojPosadeNaletu;
             _db.SaveChanges();
 
         }

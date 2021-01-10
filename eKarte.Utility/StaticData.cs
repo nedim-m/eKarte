@@ -14,5 +14,9 @@ namespace eKarte.Utility
 
         public const string SuccessAdd = "Uspješno dodano!";
         public const string ErrorAdd = "Greška prilikom dodavanja!";
+
+        public const string OznakaAvion = "Avion";
+        public const string OznakaBus = "Bus";
+       
     }
 }

@@ -35,7 +35,12 @@ namespace eKarte.Models
         public string Naziv { get; set; }
 
         [Required]
+        [DisplayName("Osnovna cijena karte")]
         public double OsnovnaCijenaLeta { get; set; }
+        [Required]
+        [Range(5,20)]
+        [DisplayName("Broj članova posade")]
+        public int BrojPosadeNaletu { get; set; }
 
 
 

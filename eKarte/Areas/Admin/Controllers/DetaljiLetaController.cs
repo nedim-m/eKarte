@@ -47,8 +47,10 @@ namespace eKarte.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Upsert(int id)
         {
+
             int brojac = _unitOfWork.DetaljiLeta.GetAll(includeProperties: "Let,Osoblje", filter: o => o.LetId == temp).Count();
-            if (brojac>=5)
+            int brojPosade = _unitOfWork.Let.Get(temp).BrojPosadeNaletu;
+            if (brojac>= brojPosade)
             {
                 return Json(new { success = false, message = StaticData.ErrorAdd });
             }
@@ -61,7 +63,6 @@ namespace eKarte.Areas.Admin.Controllers
 
             };
 
-
             obj.Status = StaticData.StatusZauzeto;
             _unitOfWork.DetaljiLeta.Add(detaljiLeta);
             brojac++;
@@ -73,18 +74,16 @@ namespace eKarte.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja,Spol", filter: o => o.Status == StaticData.StatusSlobodno) });
+            return Json(new { data = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja,Spol", filter: o => o.Status == StaticData.StatusSlobodno).Where(i=>i.TipOsoblja.Oznaka==StaticData.OznakaAvion) });
         }
 
         [HttpGet]
         public IActionResult GetAllNaLetu()
         {
-            var objFromDb = _unitOfWork.DetaljiLeta.GetAll(includeProperties: "Let,Osoblje", filter: o => o.LetId == temp);
-            var obj = objFromDb.Where(i => i.Osoblje.Status == StaticData.StatusZauzeto);
            
-            return Json(new { data = obj });
 
-
+            return Json(new { data = _unitOfWork.DetaljiLeta.GetAll(includeProperties: "Let,Osoblje,Osoblje.Spol,Osoblje.TipOsoblja", filter: o => o.LetId == temp).Where(i => i.Osoblje.Status == StaticData.StatusZauzeto) });
+           
         }
         [HttpDelete]
         public IActionResult Delete(int id)
