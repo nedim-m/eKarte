@@ -24,6 +24,7 @@ namespace eKarte.DataAccess.Data
         public DbSet<Avion> Avion { get; set; }
         public DbSet<Kompanija> Kompanija { get; set; }
         public DbSet<DetaljiLeta> DetaljiLeta { get; set; }
+        public DbSet<Stanica> Stanica { get; set; }
 
 
     }

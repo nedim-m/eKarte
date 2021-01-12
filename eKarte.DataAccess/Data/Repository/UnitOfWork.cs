@@ -21,6 +21,7 @@ namespace eKarte.DataAccess.Data.Repository
             Avion = new AvionRepository(_db);
             Let = new LetRepository(_db);
             DetaljiLeta = new DetaljiLetaRepository(_db);
+            Stanica = new StanicaRepository(_db);
         }
 
         public ISpolRepository Spol { get;  }
@@ -37,6 +38,8 @@ namespace eKarte.DataAccess.Data.Repository
         public ILetRepository Let { get; private set; }
 
         public IDetaljiLetaRepository DetaljiLeta { get; private set; }
+
+        public IStanicaRepository Stanica { get; private set; }
 
         public void Dispose()
         {

@@ -1,0 +1,86 @@
+﻿@model eKarte.Models.ViewModels.StanicaViewModel
+
+@{
+    var title = "Dodaj Stanicu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Upsert">
+
+    <div class="row px-2 mx-2  border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Stanica.Id != 0)
+        {
+            <input type="hidden" asp-for="Stanica.Id" />
+            title = "Edit Stanice";
+        }
+
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-9">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Stanica.Naziv"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Stanica.Naziv" class="form-control" />
+                    <span asp-validation-for="Stanica.Naziv" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Stanica.Adresa"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Stanica.Adresa" class="form-control" />
+                    <span asp-validation-for="Stanica.Adresa" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Stanica.Telefon"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Stanica.Telefon" class="form-control" />
+                    <span asp-validation-for="Stanica.Telefon" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Stanica.GradId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Stanica.GradId, Model.GradList,
+                                            "- Molimo izaberite grad -", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Stanica.Id != 0)
+                    {
+
+                        <partial name="_EditAndBackToListButton" model="Model.Stanica.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
