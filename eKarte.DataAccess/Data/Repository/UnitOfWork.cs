@@ -23,6 +23,7 @@ namespace eKarte.DataAccess.Data.Repository
             DetaljiLeta = new DetaljiLetaRepository(_db);
             Stanica = new StanicaRepository(_db);
             TipBusa = new TipBusaRepository(_db);
+            Bus = new BusRepository(_db);
         }
 
         public ISpolRepository Spol { get;  }
@@ -42,6 +43,7 @@ namespace eKarte.DataAccess.Data.Repository
 
         public IStanicaRepository Stanica { get; private set; }
         public ITipBusaRepository TipBusa { get; private set; }
+        public IBusRepository Bus { get; private set; }
 
         public void Dispose()
         {

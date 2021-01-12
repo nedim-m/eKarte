@@ -1,0 +1,105 @@
+﻿@model eKarte.Models.ViewModels.BusViewModel
+
+@{
+    var title = "Dodaj bus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Upsert">
+
+    <div class="row px-2 mx-2  border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Bus.Id != 0)
+        {
+            <input type="hidden" asp-for="Bus.Id" />
+            title = "Edit busa";
+        }
+
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-9">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Bus.Naziv"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Bus.Naziv" class="form-control" />
+                    <span asp-validation-for="Bus.Naziv" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Bus.Model"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Bus.Model" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Bus.Model" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Bus.Proizvodjac"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Bus.Proizvodjac" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Bus.Proizvodjac" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Bus.Kapacitet"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Bus.Kapacitet" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Bus.Kapacitet" class="text-danger"></span>
+                </div>
+            </div>
+           
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Bus.TipBusaId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Bus.TipBusaId, Model.ListaTipova,
+                                            "- Molimo izaberite tip -", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Bus.KompanijaId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Bus.KompanijaId, Model.ListaKompanija,
+                                            "- Molimo izaberite kompaniju -", new { @class = "form-control" })
+                </div>
+            </div>
+            
+
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Bus.Id != 0)
+                    {
+
+                        <partial name="_EditAndBackToListButton" model="Model.Bus.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
