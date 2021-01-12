@@ -17,7 +17,7 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
         ILetRepository Let { get; }
         IDetaljiLetaRepository DetaljiLeta { get; }
         IStanicaRepository Stanica { get; }
-
+        ITipBusaRepository TipBusa { get; }
         void Save();
     }
 }
