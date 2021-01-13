@@ -22,8 +22,10 @@ namespace eKarte.Areas.Admin.Controllers
         public LinijaViewModel LinijaVM { get; set; }
         public IActionResult Upsert(int? id)
         {
-            var listaV = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Vozac");
-            var listaK= _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Kondukter");
+            var listaV = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Vozac")
+                .Where(i=>i.Status==StaticData.StatusSlobodno);
+            var listaK= _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Kondukter")
+                .Where(i => i.Status == StaticData.StatusSlobodno);
             LinijaVM = new LinijaViewModel()
             {
                 Linija = new Models.Linija(),
@@ -41,17 +43,49 @@ namespace eKarte.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Upsert()
         {
-            var listaV = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Vozac");
-            var listaK = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Kondukter");
+            var listaV = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Vozac")
+                .Where(i => i.Status == StaticData.StatusSlobodno); ;
+            var listaK = _unitOfWork.Osoblje.GetAll(includeProperties: "TipOsoblja", filter: o => o.TipOsoblja.Oznaka == StaticData.OznakaBus).Where(i => i.TipOsoblja.Naziv == "Kondukter")
+                .Where(i => i.Status == StaticData.StatusSlobodno); ;
             if (ModelState.IsValid)
             {
                 if (LinijaVM.Linija.Id == 0)
                 {
-                    _unitOfWork.Linija.Add(LinijaVM.Linija);
+                    if (LinijaVM.Linija.Vozac1Id != LinijaVM.Linija.Vozac2Id)
+                    {
+                        _unitOfWork.Linija.Add(LinijaVM.Linija);
+                        _unitOfWork.Osoblje.Get(LinijaVM.Linija.Vozac1Id).Status = StaticData.StatusZauzeto;
+                        _unitOfWork.Osoblje.Get(LinijaVM.Linija.Vozac2Id).Status = StaticData.StatusZauzeto;
+                        _unitOfWork.Osoblje.Get(LinijaVM.Linija.KondukterId).Status = StaticData.StatusZauzeto;
+
+                    }
+                    else
+                    {
+                        LinijaVM.Linija = new Models.Linija();
+                        LinijaVM.ListaVozacaZaBus = listaV.Select(i => new SelectListItem() { Text = i.Ime + " " + i.Prezime, Value = i.Id.ToString() });
+                        LinijaVM.ListaKonduktera = listaK.Select(i => new SelectListItem() { Text = i.Ime + " " + i.Prezime, Value = i.Id.ToString() });
+                        LinijaVM.ListaBuseva = _unitOfWork.Bus.GetListForDropdown();
+                        return View(LinijaVM);
+                    }
+                   
                 }
                 else
                 {
-                    _unitOfWork.Linija.Update(LinijaVM.Linija);
+                    if (LinijaVM.Linija.Vozac1Id != LinijaVM.Linija.Vozac2Id)
+                    {
+                        _unitOfWork.Linija.Update(LinijaVM.Linija);
+                        _unitOfWork.Osoblje.Get(LinijaVM.Linija.Vozac1Id).Status = StaticData.StatusZauzeto;
+                        _unitOfWork.Osoblje.Get(LinijaVM.Linija.Vozac2Id).Status = StaticData.StatusZauzeto;
+                        _unitOfWork.Osoblje.Get(LinijaVM.Linija.KondukterId).Status = StaticData.StatusZauzeto;
+                    }
+                    else
+                    {
+                        LinijaVM.Linija = new Models.Linija();
+                        LinijaVM.ListaVozacaZaBus = listaV.Select(i => new SelectListItem() { Text = i.Ime + " " + i.Prezime, Value = i.Id.ToString() });
+                        LinijaVM.ListaKonduktera = listaK.Select(i => new SelectListItem() { Text = i.Ime + " " + i.Prezime, Value = i.Id.ToString() });
+                        LinijaVM.ListaBuseva = _unitOfWork.Bus.GetListForDropdown();
+                        return View(LinijaVM);
+                    }
                 }
                 _unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
@@ -78,7 +112,12 @@ namespace eKarte.Areas.Admin.Controllers
             {
                 return Json(new { success = false, message = StaticData.ErrorMessage });
             }
+            _unitOfWork.Osoblje.Get(objFromDb.Vozac1Id).Status = StaticData.StatusSlobodno;
+            _unitOfWork.Osoblje.Get(objFromDb.Vozac2Id).Status = StaticData.StatusSlobodno;
+            _unitOfWork.Osoblje.Get(objFromDb.KondukterId).Status = StaticData.StatusSlobodno;
             _unitOfWork.Linija.Remove(objFromDb);
+            
+
             _unitOfWork.Save();
             return Json(new { success = true, message = StaticData.SuccessMessage });
         }

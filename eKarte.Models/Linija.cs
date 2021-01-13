@@ -16,7 +16,7 @@ namespace eKarte.Models
         public virtual Osoblje Vozac1 { get; set; }
         [Required]
         [DisplayName("Rezervni vozac")]
-        public int? Vozac2Id { get; set; }
+        public int Vozac2Id { get; set; }
         public virtual Osoblje Vozac2 { get; set; }
 
         [Required]

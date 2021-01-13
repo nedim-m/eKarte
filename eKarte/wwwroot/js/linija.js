@@ -14,9 +14,9 @@ function loadDataTable() {
         },
         "columns": [
             { "data": "naziv", "width": "10%" },
-            { "data": "vozac1Id", "width": "10%" },
-            { "data": "vozac2Id", "width": "10%" },
-            { "data": "kondukter.naziv", "width": "10%" },
+            { "data": "vozac1.ime", "width": "10%" },
+            { "data": "vozac2.ime", "width": "10%" },
+            { "data": "kondukter.ime", "width": "10%" },
             { "data": "bus.naziv", "width": "10%" }, 
             { "data": "osnovnaCijenaLinije", "width": "10%" },                   
             {
@@ -24,7 +24,7 @@ function loadDataTable() {
                 "render": function (data) {
                     return ` <div class="text-center">
                                
-                                <a href="/Admin/bus/linija/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
+                                <a href="/Admin/linija/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-edit'></i> Edit
                                 </a>
                                     &nbsp;
