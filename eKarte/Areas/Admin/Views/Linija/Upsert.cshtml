@@ -1,0 +1,105 @@
+﻿@model eKarte.Models.ViewModels.LinijaViewModel
+
+@{
+    var title = "Dodaj liniju";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Upsert">
+
+    <div class="row px-2 mx-2  border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Linija.Id != 0)
+        {
+            <input type="hidden" asp-for="Linija.Id" />
+            title = "Edit linija";
+        }
+
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-9">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Linija.Naziv"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Linija.Naziv" class="form-control" />
+                    <span asp-validation-for="Linija.Naziv" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Linija.Vozac1Id"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Linija.Vozac1Id, Model.ListaVozacaZaBus,
+                                            "- Molimo izaberite vozaca1 -", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Linija.Vozac2Id"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Linija.Vozac2Id, Model.ListaVozacaZaBus,
+                                            "- Molimo izaberite vozaca2 -", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Linija.KondukterId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Linija.KondukterId, Model.ListaKonduktera,
+                                            "- Molimo izaberite konduktera -", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Linija.BusId"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Linija.BusId, Model.ListaBuseva,
+                                            "- Molimo izaberite bus -", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Linija.OsnovnaCijenaLinije"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Linija.OsnovnaCijenaLinije" class="form-control" />
+                    <span asp-validation-for="Linija.OsnovnaCijenaLinije" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Linija.Id != 0)
+                    {
+
+                        <partial name="_EditAndBackToListButton" model="Model.Linija.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
