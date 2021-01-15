@@ -1,48 +1,42 @@
-var dataTable;
+﻿var dataTable;
+
 
 $(document).ready(function () {
     loadDataTable();
+   
 });
 
 function loadDataTable() {
 
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/admin/linija/GetAll",
+            "url": "/admin/stanicalinija/GetAllStanicaNaLiniji",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "naziv", "width": "10%" },
-            { "data": "vozac1.ime", "width": "10%" },
-            { "data": "vozac2.ime", "width": "10%" },
-            { "data": "kondukter.ime", "width": "10%" },
-            { "data": "bus.naziv", "width": "10%" },
-            { "data": "osnovnaCijenaLinije", "width": "10%" },
+            { "data": "stanica.grad.naziv", "width": "20%" },
+            { "data": "stanica.adresa", "width": "20%" },
+            { "data": "stanica.telefon", "width": "10%" },
+            { "data": "stanica.naziv", "width": "20%" },
+            { "data": "dolazakaVrijeme", "width": "15%" },
+
             {
                 "data": "id",
                 "render": function (data) {
                     return ` <div class="text-center">
                                
-                                <a href="/Admin/linija/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
-                                    <i class='far fa-edit'></i> Edit
-                                </a>
-                                 <a href="/Admin/stanicaLinija/Upsert/${data}" class='btn btn-info text-white' style='cursor:pointer;width:100px;'>
-                                     Ruta
-                                </a>
-
-                                    &nbsp;
                                 
-                                   
-
-                                <a onclick=Delete("/Admin/linija/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
-                                    <i class='far fa-trash-alt'></i> Delete
+                       
+                                 <a onclick=Delete("/Admin/stanicaLinija/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
+                                    <i class="far fa-times-circle"></i> Ukloni
                                 </a>
+                           
                             </div>
                          `;
 
 
-                }, "width": "40%"
+                }, "width": "15%"
 
             }
         ],
@@ -51,7 +45,10 @@ function loadDataTable() {
         },
         "width": "100%"
     });
+
 }
+
+
 function Delete(url) {
     swal({
         title: "Da li ste sigurni da želite izbrisati?",
@@ -70,7 +67,8 @@ function Delete(url) {
                 if (data.success) {
                     toastr.success(data.message);
                     dataTable.ajax.reload();
-
+                    location.reload();
+                  
                 }
                 else {
                     toastr.error(data.message);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace eKarte.DataAccess.Data.Repository.IRepository
 {
-   public interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         ISpolRepository Spol { get; }
         ITipOsobljaRepository TipOsoblja { get; }
@@ -20,6 +20,7 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
         ITipBusaRepository TipBusa { get; }
         IBusRepository Bus { get; }
         ILinijaRepository Linija { get; }
+        IStanicaLinijaRepository StanicaLinija { get; }
         void Save();
     }
 }

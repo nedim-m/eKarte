@@ -28,6 +28,7 @@ namespace eKarte.DataAccess.Data
         public DbSet<TipBusa> TipBusa { get; set; }
         public DbSet<Bus> Bus { get; set; }
         public DbSet<Linija> Linija { get; set; }
+        public DbSet<StanicaLinija> StanicaLinija { get; set; }
 
     }
 }
