@@ -16,15 +16,26 @@ namespace eKarte.Models
 
 
         [Required]
-        public int StanicaId { get; set; }
-        public virtual Stanica Stanica { get; set; }
+        public int StanicaPolazisteId { get; set; }
+        public virtual Stanica StanicaPolaziste { get; set; }
+        [Required]
+        public int StanicaOdredisteId { get; set; }
+        public virtual Stanica StanicaOdrediste { get; set; }
 
 
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
+        [DisplayName("Polazak busa na stanicu vrijeme")]
+        public DateTime PolazakVrijeme { get; set; }
+        [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
         [DisplayName("Dolazak busa na stanicu vrijeme")]
-        public DateTime DolazakaVrijeme { get; set; }
+        public DateTime DolazakVrijeme { get; set; }
+        [Required]
+        [DisplayName("Osnovna cijena")]
+        public double Cijena { get; set; }
 
 
 

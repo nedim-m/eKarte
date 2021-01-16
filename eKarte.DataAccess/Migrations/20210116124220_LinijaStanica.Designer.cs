@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eKarte.DataAccess.Data;
 
 namespace eKarte.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210116124220_LinijaStanica")]
+    partial class LinijaStanica
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -449,23 +451,15 @@ namespace eKarte.DataAccess.Migrations
                     b.Property<int>("BusId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DolazakVrijeme")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("KondukterId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("OsnovnaCijenaLinije")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("PolazakVrijeme")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("StanicaPocetnaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StanicaZadnjaId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Vozac1Id")
                         .HasColumnType("int");
@@ -478,10 +472,6 @@ namespace eKarte.DataAccess.Migrations
                     b.HasIndex("BusId");
 
                     b.HasIndex("KondukterId");
-
-                    b.HasIndex("StanicaPocetnaId");
-
-                    b.HasIndex("StanicaZadnjaId");
 
                     b.HasIndex("Vozac1Id");
 
@@ -600,10 +590,7 @@ namespace eKarte.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Cijena")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("DolazakVrijeme")
+                    b.Property<DateTime>("DolazakaVrijeme")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("LinijaId")
@@ -804,18 +791,6 @@ namespace eKarte.DataAccess.Migrations
                     b.HasOne("eKarte.Models.Osoblje", "Kondukter")
                         .WithMany()
                         .HasForeignKey("KondukterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eKarte.Models.Stanica", "StanicaPocetna")
-                        .WithMany()
-                        .HasForeignKey("StanicaPocetnaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eKarte.Models.Stanica", "StanicaZadnja")
-                        .WithMany()
-                        .HasForeignKey("StanicaZadnjaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
