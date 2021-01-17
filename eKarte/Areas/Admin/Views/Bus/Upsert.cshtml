@@ -40,6 +40,24 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
+                    <label asp-for="Bus.GodinaProizvodnje"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Bus.GodinaProizvodnje" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Bus.GodinaProizvodnje" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Bus.RegistracijskaOznaka"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Bus.RegistracijskaOznaka" id="txtPrice" class="form-control" />
+                    <span asp-validation-for="Bus.RegistracijskaOznaka" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
                     <label asp-for="Bus.Proizvodjac"></label>
                 </div>
                 <div class="col-8">
@@ -56,7 +74,7 @@
                     <span asp-validation-for="Bus.Kapacitet" class="text-danger"></span>
                 </div>
             </div>
-           
+
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Bus.TipBusaId"></label>
@@ -75,7 +93,7 @@
                                             "- Molimo izaberite kompaniju -", new { @class = "form-control" })
                 </div>
             </div>
-            
+
 
             <div class="form-group row">
                 <div class="col-8 offset-4">

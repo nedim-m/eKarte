@@ -13,6 +13,7 @@ namespace eKarte.Models
         public string Naziv { get; set; }
         [Required]
         public string Proizvodjac { get; set; }
+
         [Required]
         public string Model { get; set; }
         [Required]
@@ -20,7 +21,7 @@ namespace eKarte.Models
         public int GodinaProizvodnje { get; set; }
         [Required]
         public int Kapacitet { get; set; }
-       
+
         public virtual TipBusa TipBusa { get; set; }
         [Required]
         [DisplayName("Tip busa")]
@@ -29,6 +30,11 @@ namespace eKarte.Models
         [Required]
         [DisplayName("Kompanija")]
         public int KompanijaId { get; set; }
-        
+        [Required]
+        [DisplayName("Registracijska oznaka")]
+        public string RegistracijskaOznaka { get; set; }
+
+        public string Status { get; set; }
+
     }
 }

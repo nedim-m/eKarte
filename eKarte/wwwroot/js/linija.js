@@ -13,12 +13,17 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "naziv", "width": "10%" },
             { "data": "vozac1.ime", "width": "10%" },
-            { "data": "vozac2.ime", "width": "10%" },
             { "data": "kondukter.ime", "width": "10%" },
             { "data": "bus.naziv", "width": "10%" },
+            { "data": "stanicaPocetna.grad.naziv", "width": "10%" },
+            { "data": "stanicaZadnja.grad.naziv", "width": "10%" },
+            { "data": "polazakVrijeme", "width": "10%" },
+            { "data": "dolazakVrijeme", "width": "10%" },
             { "data": "osnovnaCijenaLinije", "width": "10%" },
+
+
+
             {
                 "data": "id",
                 "render": function (data) {
@@ -27,14 +32,7 @@ function loadDataTable() {
                                 <a href="/Admin/linija/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-edit'></i> Edit
                                 </a>
-                                 <a href="/Admin/stanicaLinija/Upsert/${data}" class='btn btn-info text-white' style='cursor:pointer;width:100px;'>
-                                     Ruta
-                                </a>
-
                                     &nbsp;
-                                
-                                   
-
                                 <a onclick=Delete("/Admin/linija/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-trash-alt'></i> Delete
                                 </a>
@@ -42,7 +40,7 @@ function loadDataTable() {
                          `;
 
 
-                }, "width": "40%"
+                }, "width": "30%"
 
             }
         ],

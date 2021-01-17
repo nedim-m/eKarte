@@ -43,6 +43,7 @@ namespace eKarte.Areas.Admin.Controllers
             {
                 if (BusVM.Bus.Id == 0)
                 {
+                    BusVM.Bus.Status = StaticData.StatusSlobodno;
                     _unitOfWork.Bus.Add(BusVM.Bus);
                 }
                 else

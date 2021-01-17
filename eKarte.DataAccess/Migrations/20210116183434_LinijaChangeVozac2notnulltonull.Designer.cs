@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eKarte.DataAccess.Data;
 
 namespace eKarte.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210116183434_LinijaChangeVozac2notnulltonull")]
+    partial class LinijaChangeVozac2notnulltonull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -477,6 +479,9 @@ namespace eKarte.DataAccess.Migrations
                     b.Property<int>("Vozac1Id")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Vozac2Id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BusId");
@@ -488,6 +493,8 @@ namespace eKarte.DataAccess.Migrations
                     b.HasIndex("StanicaZadnjaId");
 
                     b.HasIndex("Vozac1Id");
+
+                    b.HasIndex("Vozac2Id");
 
                     b.ToTable("Linija");
                 });
@@ -826,6 +833,10 @@ namespace eKarte.DataAccess.Migrations
                         .HasForeignKey("Vozac1Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("eKarte.Models.Osoblje", "Vozac2")
+                        .WithMany()
+                        .HasForeignKey("Vozac2Id");
                 });
 
             modelBuilder.Entity("eKarte.Models.Osoblje", b =>

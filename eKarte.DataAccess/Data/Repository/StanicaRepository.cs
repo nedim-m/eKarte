@@ -21,7 +21,7 @@ namespace eKarte.DataAccess.Data.Repository
         {
             return _db.Stanica.Select(i => new SelectListItem()
             {
-                Text = i.Naziv,
+                Text = i.Grad.Naziv+" ,"+i.Naziv,
                 Value = i.Id.ToString()
             });
         }

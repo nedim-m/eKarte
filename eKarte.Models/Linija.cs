@@ -14,10 +14,6 @@ namespace eKarte.Models
         [DisplayName("Glavni vozac")]
         public int Vozac1Id { get; set; }
         public virtual Osoblje Vozac1 { get; set; }
-       
-        [DisplayName("Rezervni vozac")]
-        public int Vozac2Id { get; set; }
-        public virtual Osoblje Vozac2 { get; set; }
 
         [Required]
         [DisplayName("Kondukter")]
@@ -30,15 +26,17 @@ namespace eKarte.Models
         public virtual Bus Bus { get; set; }
         
         [Required]
+        [DisplayName("Pocetna stanica")]
         public int StanicaPocetnaId { get; set; }
         public virtual Stanica StanicaPocetna { get; set; }
         [Required]
+        [DisplayName("Zadnja stanica")]
         public int StanicaZadnjaId { get; set; }
         public virtual Stanica StanicaZadnja { get; set; }
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
-        [DisplayName("Polazak busa na stanicu vrijeme")]
+        [DisplayName("Polazak busa sa stanice vrijeme")]
         public DateTime PolazakVrijeme { get; set; }
         [Required]
         [DataType(DataType.Time)]

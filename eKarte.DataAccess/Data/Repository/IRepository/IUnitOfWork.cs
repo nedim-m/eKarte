@@ -19,7 +19,7 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
         IStanicaRepository Stanica { get; }
         ITipBusaRepository TipBusa { get; }
         IBusRepository Bus { get; }
-        
+        ILinijaRepository Linija { get; }
         IStanicaLinijaRepository StanicaLinija { get; }
         void Save();
     }
