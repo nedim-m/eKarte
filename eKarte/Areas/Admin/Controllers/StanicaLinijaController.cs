@@ -49,10 +49,7 @@ namespace eKarte.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (StanicaLinijaVM.StanicaPolaskaId == StanicaLinijaVM.StanicaDolaskaId)
-                {
-                    
-                }
+        
                 StanicaLinija stanicalinija = new StanicaLinija()
                 {
                     Linija =_unitOfWork.Linija.Get(temp),
