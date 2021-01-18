@@ -14,15 +14,12 @@ namespace eKarte.Models
         public int LinijaId { get; set; }
         public virtual Linija Linija { get; set; }
 
-
         [Required]
         public int StanicaPolazisteId { get; set; }
         public virtual Stanica StanicaPolaziste { get; set; }
         [Required]
         public int StanicaOdredisteId { get; set; }
         public virtual Stanica StanicaOdrediste { get; set; }
-
-
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
@@ -34,6 +31,7 @@ namespace eKarte.Models
         [DisplayName("Dolazak busa na stanicu vrijeme")]
         public DateTime DolazakVrijeme { get; set; }
         [Required]
+        [Range(1,1000)]
         [DisplayName("Osnovna cijena")]
         public double Cijena { get; set; }
 

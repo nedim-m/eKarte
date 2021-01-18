@@ -15,11 +15,13 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "stanica.grad.naziv", "width": "20%" },
-            { "data": "stanica.adresa", "width": "20%" },
-            { "data": "stanica.telefon", "width": "10%" },
-            { "data": "stanica.naziv", "width": "20%" },
-            { "data": "dolazakaVrijeme", "width": "15%" },
+            { "data": "stanicaPolaziste.naziv", "width": "15%" },
+            { "data": "stanicaPolaziste.grad.naziv", "width": "10%" },
+            { "data": "polazakVrijeme", "width": "10%" },
+            { "data": "stanicaOdrediste.naziv", "width": "15%" },
+            { "data": "stanicaOdrediste.grad.naziv", "width": "10%" },
+            { "data": "dolazakVrijeme", "width": "10%" },
+            { "data": "cijena", "width": "10%" },
 
             {
                 "data": "id",
@@ -28,15 +30,15 @@ function loadDataTable() {
                                
                                 
                        
-                                 <a onclick=Delete("/Admin/stanicaLinija/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
-                                    <i class="far fa-times-circle"></i> Ukloni
+                                 <a onclick=Delete("/Admin/stanicaLinija/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;'>
+                                    <i class="far fa-times-circle"></i>
                                 </a>
                            
                             </div>
                          `;
 
 
-                }, "width": "15%"
+                }, "width": "10%"
 
             }
         ],
@@ -67,7 +69,7 @@ function Delete(url) {
                 if (data.success) {
                     toastr.success(data.message);
                     dataTable.ajax.reload();
-                    location.reload();
+                   
                   
                 }
                 else {
@@ -77,3 +79,4 @@ function Delete(url) {
         });
     });
 }
+

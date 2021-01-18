@@ -12,13 +12,27 @@ namespace eKarte.Models.ViewModels
         
         public Linija Linija { get; set; }
         [Required]
-        [DisplayName("Stanica")]
-        public int StanicaId { get; set; }
+        [DisplayName("Stanica Polaska")]
+        public int StanicaPolaskaId { get; set; }
         public IEnumerable<SelectListItem> StanicaLista { get; set; }
+     
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        [DisplayName("Polazak busa sa stanice")]
+        public DateTime PolazakVrijeme { get; set; }
+
+
+        [Required]
+        [DisplayName("Stanica Dolaska")]
+        public int StanicaDolaskaId { get; set; }
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         [DisplayName("Dolazak busa na stanicu vrijeme")]
         public DateTime DolazakaVrijeme { get; set; }
+
+        [Required]
+        [DisplayName("Osnovna cijena")]
+        public double OsnovnaCijenaLinije { get; set; }
     }
 }

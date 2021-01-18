@@ -32,9 +32,13 @@ function loadDataTable() {
                                 <a href="/Admin/linija/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-edit'></i> Edit
                                 </a>
-                                    &nbsp;
+                                    
                                 <a onclick=Delete("/Admin/linija/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer;width:100px;'>
                                     <i class='far fa-trash-alt'></i> Delete
+                                </a>
+
+                                 <a href="/Admin/StanicaLinija/Insert/${data}" class='btn btn-info text-white' style='cursor:pointer;width:100px;'>
+                                    <i class='far fa-edit'></i> Stanice
                                 </a>
                             </div>
                          `;
