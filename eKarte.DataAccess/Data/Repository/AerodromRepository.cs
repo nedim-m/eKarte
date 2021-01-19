@@ -28,6 +28,7 @@ namespace eKarte.DataAccess.Data.Repository
             var objFromDb = _db.Aerodrom.FirstOrDefault(i => i.Id == aerodrom.Id);
             objFromDb.Naziv = aerodrom.Naziv;
             objFromDb.Sifra = aerodrom.Sifra;
+            objFromDb.GradId = aerodrom.GradId;
             _db.SaveChanges();
         }
 

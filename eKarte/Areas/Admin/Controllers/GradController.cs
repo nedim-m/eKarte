@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using eKarte.DataAccess.Data.Repository.IRepository;
 using eKarte.Models;
 using eKarte.Models.ViewModels;
+using eKarte.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eKarte.Areas.Admin.Controllers
@@ -72,11 +73,11 @@ namespace eKarte.Areas.Admin.Controllers
             var objFromDb = _unitOfWork.Grad.Get(id);
             if (objFromDb == null)
             {
-                return Json(new { success = false, message = "Error while deleting" });
+                return Json(new { success = false, message = StaticData.ErrorMessage });
             }
             _unitOfWork.Grad.Remove(objFromDb);
             _unitOfWork.Save();
-            return Json(new { success = true, message = "Delete successfull." });
+            return Json(new { success = true, message = StaticData.SuccessMessage });
         }
         #endregion
         public IActionResult Index()

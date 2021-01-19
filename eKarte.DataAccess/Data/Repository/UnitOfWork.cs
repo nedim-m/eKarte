@@ -27,6 +27,7 @@ namespace eKarte.DataAccess.Data.Repository
             Linija = new LinijaRepository(_db);
             StanicaLinija = new StanicaLinijaRepository(_db);
             TipKarte = new TipKarteRepository(_db);
+            VrstaKarte = new VrstaKarteRepository(_db);
         }
 
         public ISpolRepository Spol { get;  }
@@ -52,6 +53,7 @@ namespace eKarte.DataAccess.Data.Repository
         public IStanicaLinijaRepository StanicaLinija { get; private set; }
 
         public ITipKarteRepository TipKarte { get; }
+        public IVrstaKarteRepository VrstaKarte { get; }
 
         public void Dispose()
         {
