@@ -23,6 +23,7 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
         IStanicaLinijaRepository StanicaLinija { get; }
         ITipKarteRepository TipKarte { get; }
         IVrstaKarteRepository VrstaKarte { get; }
+        IKlasaAvioKarteRepository KlasaAvioKarte { get; }
         void Save();
     }
 }

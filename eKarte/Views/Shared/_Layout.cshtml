@@ -30,18 +30,24 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropDown" role="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Admin Menu
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropDown">
+
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="TipOsoblja" asp-action="Index">Tip Osoblja</a>
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Osoblje" asp-action="Index">Osoblje</a>
-                                <a class="dropdown-item " asp-area="Admin" asp-controller="Aerodrom" asp-action="Index">Aerodrom</a>
+
+
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Drzava" asp-action="Index">Drzava</a>
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Grad" asp-action="Index">Grad</a>
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Kompanija" asp-action="Index">Kompanija</a>
+
+                                <a class="dropdown-item " asp-area="Admin" asp-controller="Aerodrom" asp-action="Index">Aerodrom</a>
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Avion" asp-action="Index">Avion</a>
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Let" asp-action="Index">Letovi</a>
+                                <a class="dropdown-item " asp-area="Admin" asp-controller="KlasaAvioKarte" asp-action="Index">Klase Karte</a>
+
 
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Stanica" asp-action="Index">Stanice</a>
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="TipBusa" asp-action="Index">Tip busa</a>
@@ -49,24 +55,13 @@
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="Linija" asp-action="Index">Linija</a>
                                 <a class="dropdown-item " asp-area="Admin" asp-controller="VrstaKarte" asp-action="Index">Vrsta Karte</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

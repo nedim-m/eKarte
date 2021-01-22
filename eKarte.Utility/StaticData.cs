@@ -17,6 +17,10 @@ namespace eKarte.Utility
 
         public const string OznakaAvion = "Avion";
         public const string OznakaBus = "Bus";
+
+
+        public const string Da = "DA";
+        public const string Ne = "NE";
        
     }
 }
