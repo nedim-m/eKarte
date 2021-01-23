@@ -30,6 +30,7 @@ namespace eKarte.DataAccess.Data.Repository
             VrstaKarte = new VrstaKarteRepository(_db);
             KlasaAvioKarte = new KlasaAvioKarteRepository(_db);
             AvioKarta = new AvioKartaRepository(_db);
+            AutobusnaKarta = new AutobusnaKartaRepository(_db);
         }
 
         public ISpolRepository Spol { get;  }
@@ -60,6 +61,7 @@ namespace eKarte.DataAccess.Data.Repository
         public IKlasaAvioKarteRepository KlasaAvioKarte { get; private set; }
 
         public IAvioKartaRepository AvioKarta { get; private set; }
+        public IAutobusnaKartaRepository AutobusnaKarta { get; private set; }
 
         public void Dispose()
         {

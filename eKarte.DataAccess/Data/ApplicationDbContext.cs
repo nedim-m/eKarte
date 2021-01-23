@@ -33,5 +33,7 @@ namespace eKarte.DataAccess.Data
         public DbSet<VrstaKarte> VrstaKarte { get; set; }
         public DbSet<KlasaAvioKarte> KlasaAvioKarte { get; set; }
         public DbSet<AvioKarta> AvioKarta { get; set; }
+        public DbSet<AutobusnaKarta> AutobusnaKarta { get; set; }
+
     }
 }

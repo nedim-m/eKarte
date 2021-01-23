@@ -25,6 +25,7 @@ namespace eKarte.DataAccess.Data.Repository.IRepository
         IVrstaKarteRepository VrstaKarte { get; }
         IKlasaAvioKarteRepository KlasaAvioKarte { get; }
         IAvioKartaRepository AvioKarta { get; }
+        IAutobusnaKartaRepository AutobusnaKarta { get; }
         void Save();
     }
 }
