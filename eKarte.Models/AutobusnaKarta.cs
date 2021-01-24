@@ -11,8 +11,8 @@ namespace eKarte.Models
         [Required]
         public DateTime Datum { get; set; }
         [Required]
-        public int LinijaId { get; set; }
+        public int StanicaLinijaId { get; set; }
       
-        public Linija Linija { get; set; }
+        public StanicaLinija StanicaLinija { get; set; }
     }
 }
