@@ -17,6 +17,7 @@ function loadDataTable() {
             { "data": "model", "width": "10%" },
             { "data": "proizvodjac", "width": "10%" },
             { "data": "godinaProizvodnje", "width": "10%" },
+            { "data": "registracijskaOznaka", "width": "10%" },
             { "data": "kapacitet", "width": "10%" },
             { "data": "tipBusa.naziv", "width": "10%" },
             { "data": "kompanija.naziv", "width": "10%" },
