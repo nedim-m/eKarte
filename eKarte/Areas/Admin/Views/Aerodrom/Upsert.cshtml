@@ -4,75 +4,75 @@
     var title = "Dodaj aerodrom";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<br />
 <form method="post" asp-action="Upsert">
+    <div class=" container">
+        <div class="row px-2 mx-2  border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.Aerodrom.Id != 0)
+            {
+                <input type="hidden" asp-for="Aerodrom.Id" />
+                title = "Edit aerodrom";
+            }
 
-    <div class="row px-2 mx-2  border">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Aerodrom.Id != 0)
-        {
-            <input type="hidden" asp-for="Aerodrom.Id" />
-            title = "Edit aerodrom";
-        }
-
-        <div class="col-12">
-            <h2 class="text-primary">@title</h2>
-            <br />
-        </div>
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Aerodrom.Naziv"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Aerodrom.Naziv" class="form-control" />
-                    <span asp-validation-for="Aerodrom.Naziv" class="text-danger"></span>
-                </div>
+            <div class="col-12">
+                <h2 class="text-primary">@title</h2>
+                <br />
             </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Aerodrom.Sifra"></label>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Aerodrom.Naziv"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Aerodrom.Naziv" class="form-control" />
+                        <span asp-validation-for="Aerodrom.Naziv" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Aerodrom.Sifra" class="form-control" />
-                    <span asp-validation-for="Aerodrom.Sifra" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Aerodrom.Sifra"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Aerodrom.Sifra" class="form-control" />
+                        <span asp-validation-for="Aerodrom.Sifra" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Aerodrom.GradId"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Aerodrom.GradId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.Aerodrom.GradId, Model.ListaGradova,
+                                                "- Molimo izaberite grad -", new { @class = "form-control" })
+                    </div>
                 </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Aerodrom.GradId, Model.ListaGradova,
-                                            "- Molimo izaberite grad -", new { @class = "form-control" })
-                </div>
-            </div>
 
 
-            <div class="form-group row">
-                <div class="col-8 offset-4">
-                    @if (Model.Aerodrom.Id != 0)
-                    {
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+                        @if (Model.Aerodrom.Id != 0)
+                        {
 
-                        <partial name="_EditAndBackToListButton" model="Model.Aerodrom.Id" />
-                    }
-                    else
-                    {
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            <partial name="_EditAndBackToListButton" model="Model.Aerodrom.Id" />
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                </div>
+                                <div class="col">
+                                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                                </div>
                             </div>
-                            <div class="col">
-                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-
 </form>
 
 @section Scripts{

@@ -6,62 +6,63 @@
 }
 
 <form method="post" asp-action="Upsert">
+    <br />
+    <div class="container">
+        <div class="row px-2 mx-2  border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.Grad.Id != 0)
+            {
+                <input type="hidden" asp-for="Grad.Id" />
+                title = "Edit grad";
+            }
 
-    <div class="row px-2 mx-2  border">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Grad.Id != 0)
-        {
-            <input type="hidden" asp-for="Grad.Id" />
-            title = "Edit grad";
-        }
-
-        <div class="col-12">
-            <h2 class="text-primary">@title</h2>
-            <br />
-        </div>
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Grad.Naziv"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Grad.Naziv" class="form-control" />
-                    <span asp-validation-for="Grad.Naziv" class="text-danger"></span>
-                </div>
+            <div class="col-12">
+                <h2 class="text-primary">@title</h2>
+                <br />
             </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Grad.DrzavaId"></label>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Grad.Naziv"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Grad.Naziv" class="form-control" />
+                        <span asp-validation-for="Grad.Naziv" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Grad.DrzavaId, Model.DrzavaLista,
-                                            "- Molimo izaberite drzavu -", new { @class = "form-control" })
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Grad.DrzavaId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.Grad.DrzavaId, Model.DrzavaLista,
+                                                "- Molimo izaberite drzavu -", new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-           
 
-            <div class="form-group row">
-                <div class="col-8 offset-4">
-                    @if (Model.Grad.Id != 0)
-                    {
 
-                        <partial name="_EditAndBackToListButton" model="Model.Grad.Id" />
-                    }
-                    else
-                    {
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+                        @if (Model.Grad.Id != 0)
+                        {
+
+                            <partial name="_EditAndBackToListButton" model="Model.Grad.Id" />
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                </div>
+                                <div class="col">
+                                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                                </div>
                             </div>
-                            <div class="col">
-                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 
 </form>

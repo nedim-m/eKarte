@@ -8,137 +8,139 @@
 }
 
 <form method="post" asp-action="Insert">
+    <br />
+    <div class="container">
+        <div class="border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="border">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-        <div class="col-12">
-            <h2 class="text-primary">@naziv</h2>
-            <br />
-            <h4 class="text-primary">Unesite Stajališta</h4>
-            <br />
-        </div>
-        <br /> <br />
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="StanicaPolaskaId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.StanicaPolaskaId, Model.StanicaLista,
-                                            "- Unesite stanicu polaska-", new { @class = "form-control" })
-                    <span asp-validation-for="StanicaPolaskaId" class="text-danger"></span>
-                </div>
-
+            <div class="col-12">
+                <h2 class="text-primary">@naziv</h2>
+                <br />
+                <h4 class="text-primary">Unesite Stajališta</h4>
+                <br />
             </div>
-        </div>
+            <br /> <br />
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="StanicaPolaskaId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.StanicaPolaskaId, Model.StanicaLista,
+                                                "- Unesite stanicu polaska-", new { @class = "form-control" })
+                        <span asp-validation-for="StanicaPolaskaId" class="text-danger"></span>
+                    </div>
 
-
-
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="PolazakVrijeme"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="PolazakVrijeme" class="form-control" />
-                    <span asp-validation-for="PolazakVrijeme" class="text-danger"></span>
                 </div>
             </div>
-        </div>
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="StanicaDolaskaId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.StanicaDolaskaId, Model.StanicaLista,
-                                            "- Unesite stanicu dolaska-", new { @class = "form-control" })
-                    <span asp-validation-for="StanicaDolaskaId" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
 
 
 
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="DolazakaVrijeme"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="DolazakaVrijeme" class="form-control" />
-                    <span asp-validation-for="DolazakaVrijeme" class="text-danger"></span>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="PolazakVrijeme"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="PolazakVrijeme" class="form-control" />
+                        <span asp-validation-for="PolazakVrijeme" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="OsnovnaCijenaLinije"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="OsnovnaCijenaLinije" id="cijenaId" class="form-control" />
-                    <span asp-validation-for="OsnovnaCijenaLinije" class="text-danger"></span>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="StanicaDolaskaId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.StanicaDolaskaId, Model.StanicaLista,
+                                                "- Unesite stanicu dolaska-", new { @class = "form-control" })
+                        <span asp-validation-for="StanicaDolaskaId" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-8 offset-4">
 
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
-                        </div>
-                        <div class="col">
-                            <a asp-controller="Linija" asp-action="Index" class="btn btn-success form-control">Back to List</a>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="DolazakaVrijeme"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="DolazakaVrijeme" class="form-control" />
+                        <span asp-validation-for="DolazakaVrijeme" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="OsnovnaCijenaLinije"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OsnovnaCijenaLinije" id="cijenaId" class="form-control" />
+                        <span asp-validation-for="OsnovnaCijenaLinije" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-controller="Linija" asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-
-
 </form>
 <br />
 <br />
-<div class="border ">
-    <div class="row">
-        <div class="col-6">
-            <h2 class="text-primary">Stajališta</h2>
+<div class="container">
+    <div class="border ">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-primary">Stajališta</h2>
+
+            </div>
 
         </div>
-
+        <br />
+        <br />
+        <table id="tblData" class=" table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Stanica Polaska</th>
+                    <th>Grad</th>
+                    <th>Vrijeme Polaska</th>
+                    <th>Stanica Dolaska</th>
+                    <th>Grad</th>
+                    <th>Vrijeme Dolaska</th>
+                    <th>Cijena</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
     </div>
-    <br />
-    <br />
-    <table id="tblData" class=" table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Stanica Polaska</th>
-                <th>Grad</th>
-                <th>Vrijeme Polaska</th>
-                <th>Stanica Dolaska</th>
-                <th>Grad</th>
-                <th>Vrijeme Dolaska</th>
-                <th>Cijena</th>
-                <th></th>
-            </tr>
-        </thead>
-    </table>
 </div>
-
 @section Scripts{
     <script src="~/js/stanicalinijadodaj.js"></script>
-   <script>
-       if (document.getElementById("cijenaId").value == 0) {
-           document.getElementById("cijenaId").value = "";
-       }
-   </script>
+    <script>
+        if (document.getElementById("cijenaId").value == 0) {
+            document.getElementById("cijenaId").value = "";
+        }
+    </script>
 
     @{
         <partial name="_ValidationScriptsPartial" />

@@ -6,146 +6,147 @@
 }
 
 <form method="post" asp-action="Upsert">
+    <br />
+    <div class="container">
+        <div class="row px-2 mx-2  border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.Osoblje.Id != 0)
+            {
+                <input type="hidden" asp-for="Osoblje.Id" />
+                title = "Edit Osoblja";
+            }
 
-    <div class="row px-2 mx-2  border">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Osoblje.Id != 0)
-        {
-            <input type="hidden" asp-for="Osoblje.Id" />
-            title = "Edit Osoblja";
-        }
-
-        <div class="col-12">
-            <h2 class="text-primary">@title</h2>
-            <br />
-        </div>
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.Ime"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.Ime" class="form-control" />
-                    <span asp-validation-for="Osoblje.Ime" class="text-danger"></span>
-                </div>
+            <div class="col-12">
+                <h2 class="text-primary">@title</h2>
+                <br />
             </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.Prezime"></label>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.Ime"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.Ime" class="form-control" />
+                        <span asp-validation-for="Osoblje.Ime" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.Prezime" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Osoblje.Prezime" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.Prezime"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.Prezime" id="txtPrice" class="form-control" />
+                        <span asp-validation-for="Osoblje.Prezime" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.Adresa"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.Adresa"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.Adresa" id="txtPrice" class="form-control" />
+                        <span asp-validation-for="Osoblje.Adresa" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.Adresa" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Osoblje.Adresa" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.Email"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.Email" id="txtPrice" class="form-control" />
+                        <span asp-validation-for="Osoblje.Email" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.Email"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.Telefon"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.Telefon" id="txtPrice" class="form-control" />
+                        <span asp-validation-for="Osoblje.Telefon" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.Email" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Osoblje.Email" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.JMBG"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.JMBG" id="txtPrice" class="form-control" />
+                        <span asp-validation-for="Osoblje.JMBG" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.Telefon"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.DatumRodjenja"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.DatumRodjenja" id="txtPrice" class="form-control" />
+                        <span asp-validation-for="Osoblje.DatumRodjenja" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.Telefon" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Osoblje.Telefon" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.DatumZaposljenja"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Osoblje.DatumZaposljenja" id="txtPrice" class="form-control" />
+                        <span asp-validation-for="Osoblje.DatumZaposljenja" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.JMBG"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.JMBG" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Osoblje.JMBG" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.DatumRodjenja"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.DatumRodjenja" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Osoblje.DatumRodjenja" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.DatumZaposljenja"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Osoblje.DatumZaposljenja" id="txtPrice" class="form-control" />
-                    <span asp-validation-for="Osoblje.DatumZaposljenja" class="text-danger"></span>
-                </div>
-            </div>
 
 
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.SpolId"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.SpolId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.Osoblje.SpolId, Model.SpolLista,
+                                                "- Molimo izaberite Spol -", new { @class = "form-control" })
+                    </div>
                 </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Osoblje.SpolId, Model.SpolLista,
-                                            "- Molimo izaberite Spol -", new { @class = "form-control" })
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.TipOsobljaId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.Osoblje.TipOsobljaId, Model.TipOsobljaLista,
+                                                "- Molimo izaberite Tip Osoblja -", new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.TipOsobljaId"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Osoblje.Opis"></label>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="Osoblje.Opis" class="form-control" style="height:300px;"></textarea>
+                        <span asp-validation-for="Osoblje.Opis" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Osoblje.TipOsobljaId, Model.TipOsobljaLista,
-                                            "- Molimo izaberite Tip Osoblja -", new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Osoblje.Opis"></label>
-                </div>
-                <div class="col-8">
-                    <textarea asp-for="Osoblje.Opis" class="form-control" style="height:300px;"></textarea>
-                    <span asp-validation-for="Osoblje.Opis" class="text-danger"></span>
-                </div>
-            </div>
 
-            <div class="form-group row">
-                <div class="col-8 offset-4">
-                    @if (Model.Osoblje.Id != 0)
-                    {
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+                        @if (Model.Osoblje.Id != 0)
+                        {
 
-                        <partial name="_EditAndBackToListButton" model="Model.Osoblje.Id" />
-                    }
-                    else
-                    {
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            <partial name="_EditAndBackToListButton" model="Model.Osoblje.Id" />
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                </div>
+                                <div class="col">
+                                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                                </div>
                             </div>
-                            <div class="col">
-                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-
 </form>
 
 @section Scripts{

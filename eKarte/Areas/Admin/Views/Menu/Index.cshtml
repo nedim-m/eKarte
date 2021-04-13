@@ -1,0 +1,105 @@
+﻿
+
+<div class="container">
+    <h1 class="text-center text-primary">Admin Menu</h1>
+
+    <div class="row mb-4">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center"><i class="fas fa-plane-departure"></i></h2>
+                    <div class="text-center">
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Avion"
+                           asp-action="Index">Avion</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Aerodrom"
+                           asp-action="Index">Aerodrom</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Let"
+                           asp-action="Index">Letovi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center" style="color:yellow"><i class="fas fa-bus"></i></h2>
+                    <div class="text-center">
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Stanica"
+                           asp-action="Index">Stanice</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Bus"
+                           asp-action="Index">Bus</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Linija"
+                           asp-action="Index">Linija</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="TipBusa"
+                           asp-action="Index">Tip busa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center text-info"><i class="fas fa-users"></i></h2>
+                    <div class="text-center">
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Osoblje"
+                           asp-action="Index">Osoblje</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="TipOsoblja"
+                           asp-action="Index">Tip Osoblja</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center text-danger"><i class="fas fa-map-marker-alt"></i></h2>
+                    <div class="text-center">
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Drzava"
+                           asp-action="Index">Drzava</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Grad"
+                           asp-action="Index">Grad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center text-success"><i class="fas fa-ticket-alt"></i></h2>
+                    <div class="text-center">
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="VrstaKarte"
+                           asp-action="Index">Vrsta Karte</a>
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="KlasaAvioKarte"
+                           asp-action="Index">Klasa Karte</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center"><i class="fas fa-building"></i></h2>
+                    <div class="text-center">
+                        <a class=" btn btn-primary" asp-area="Admin" asp-controller="Kompanija"
+                           asp-action="Index">Kompanija</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+

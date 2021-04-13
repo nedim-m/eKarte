@@ -7,96 +7,97 @@
 }
 
 <form method="post" asp-action="Upsert">
+    <br />
+    <div class="container">
+        <div class="row px-2 mx-2 border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.Id != 0)
+            {
+                <input type="hidden" asp-for="Id" />
+                title = "Edit Klase Karte";
+            }
 
-    <div class="row px-2 mx-2 border">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Id != 0)
-        {
-            <input type="hidden" asp-for="Id" />
-            title = "Edit Klase Karte";
-        }
+            <div class="col-12">
+                <h2 class="text-primary">@title</h2>
+                <br />
+            </div>
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Naziv"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Naziv" class="form-control" />
+                        <span asp-validation-for="Naziv" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Hrana"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="radio" name="hrana" asp-for="Hrana" value="@StaticData.Da" /> Da
+                        <input type="radio" name="hrana" asp-for="Hrana" value="@StaticData.Ne" /> Ne
+                        <span asp-validation-for="Hrana" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="WiFi"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="radio" name="wifi" asp-for="WiFi" value="@StaticData.Da" /> Da
+                        <input type="radio" name="wifi" asp-for="WiFi" value="@StaticData.Ne" /> Ne
+                        <span asp-validation-for="WiFi" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="PosebnoSjediste"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="radio" name="posebnosjediste" asp-for="PosebnoSjediste" value="@StaticData.Da" /> Da
+                        <input type="radio" name="posebnosjediste" asp-for="PosebnoSjediste" value="@StaticData.Ne" /> Ne
+                        <span asp-validation-for="PosebnoSjediste" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MjestoDoProzora"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="radio" name="mjestodoprozora" asp-for="MjestoDoProzora" value="@StaticData.Da" /> Da
+                        <input type="radio" name="mjestodoprozora" asp-for="MjestoDoProzora" value="@StaticData.Ne" /> Ne
+                        <span asp-validation-for="MjestoDoProzora" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="PortZaPunjenjeUredjaja"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="radio" name="portzapunjenjeuredjaja" asp-for="PortZaPunjenjeUredjaja" value="@StaticData.Da" /> Da
+                        <input type="radio" name="portzapunjenjeuredjaja" asp-for="PortZaPunjenjeUredjaja" value="@StaticData.Ne" /> Ne
+                        <span asp-validation-for="PortZaPunjenjeUredjaja" class="text-danger"></span>
+                    </div>
+                </div>
 
-        <div class="col-12">
-            <h2 class="text-primary">@title</h2>
-            <br />
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+                        @if (Model.Id != 0)
+                        {
+
+                            <partial name="_EditAndBackToListButton" model="Model.Id" />
+                        }
+                        else
+                        {
+
+                            <partial name="_CreateAndBackToListButton" />
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-8">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Naziv"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Naziv" class="form-control" />
-                    <span asp-validation-for="Naziv" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Hrana"></label>
-                </div>
-                <div class="col-8">
-                    <input type="radio" name="hrana" asp-for="Hrana" value="@StaticData.Da" /> Da
-                    <input type="radio" name="hrana" asp-for="Hrana" value="@StaticData.Ne" /> Ne
-                    <span asp-validation-for="Hrana" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="WiFi"></label>
-                </div>
-                <div class="col-8">
-                    <input type="radio" name="wifi" asp-for="WiFi" value="@StaticData.Da" /> Da
-                    <input type="radio" name="wifi" asp-for="WiFi" value="@StaticData.Ne" /> Ne
-                    <span asp-validation-for="WiFi" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="PosebnoSjediste"></label>
-                </div>
-                <div class="col-8">
-                    <input type="radio" name="posebnosjediste" asp-for="PosebnoSjediste" value="@StaticData.Da" /> Da
-                    <input type="radio" name="posebnosjediste" asp-for="PosebnoSjediste" value="@StaticData.Ne" /> Ne
-                    <span asp-validation-for="PosebnoSjediste" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="MjestoDoProzora"></label>
-                </div>
-                <div class="col-8">
-                    <input type="radio" name="mjestodoprozora" asp-for="MjestoDoProzora" value="@StaticData.Da" /> Da
-                    <input type="radio" name="mjestodoprozora" asp-for="MjestoDoProzora" value="@StaticData.Ne" /> Ne
-                    <span asp-validation-for="MjestoDoProzora" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="PortZaPunjenjeUredjaja"></label>
-                </div>
-                <div class="col-8">
-                    <input type="radio" name="portzapunjenjeuredjaja" asp-for="PortZaPunjenjeUredjaja" value="@StaticData.Da" /> Da
-                    <input type="radio" name="portzapunjenjeuredjaja" asp-for="PortZaPunjenjeUredjaja" value="@StaticData.Ne" /> Ne
-                    <span asp-validation-for="PortZaPunjenjeUredjaja" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-8 offset-4">
-                    @if (Model.Id != 0)
-                    {
-
-                        <partial name="_EditAndBackToListButton" model="Model.Id" />
-                    }
-                    else
-                    {
-
-                        <partial name="_CreateAndBackToListButton" />
-                    }
-                </div>
-            </div>
-        </div>
-
     </div>
 
 </form>

@@ -6,100 +6,101 @@
 }
 
 <form method="post" asp-action="Upsert">
+    <br />
+    <div class=" container">
+        <div class="row px-2 mx-2  border ">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.Avion.Id != 0)
+            {
+                <input type="hidden" asp-for="Avion.Id" />
+                title = "Edit grad";
+            }
 
-    <div class="row px-2 mx-2  border">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Avion.Id != 0)
-        {
-            <input type="hidden" asp-for="Avion.Id" />
-            title = "Edit grad";
-        }
-
-        <div class="col-12">
-            <h2 class="text-primary">@title</h2>
-            <br />
-        </div>
-        <div class="col-9">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Avion.Naziv"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Avion.Naziv" class="form-control" />
-                    <span asp-validation-for="Avion.Naziv" class="text-danger"></span>
-                </div>
+            <div class="col-12">
+                <h2 class="text-primary">@title</h2>
+                <br />
             </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Avion.Proizvodjac"></label>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Avion.Naziv"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Avion.Naziv" class="form-control" />
+                        <span asp-validation-for="Avion.Naziv" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Avion.Proizvodjac" class="form-control" />
-                    <span asp-validation-for="Avion.Proizvodjac" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Avion.Proizvodjac"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Avion.Proizvodjac" class="form-control" />
+                        <span asp-validation-for="Avion.Proizvodjac" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Avion.Model"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Avion.Model"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Avion.Model" class="form-control" />
+                        <span asp-validation-for="Avion.Model" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Avion.Model" class="form-control" />
-                    <span asp-validation-for="Avion.Model" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Avion.GodinaProizvodnje"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Avion.GodinaProizvodnje" class="form-control" />
+                        <span asp-validation-for="Avion.GodinaProizvodnje" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Avion.GodinaProizvodnje"></label>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Avion.Kapacitet"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Avion.Kapacitet" class="form-control" />
+                        <span asp-validation-for="Avion.Kapacitet" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <input asp-for="Avion.GodinaProizvodnje" class="form-control" />
-                    <span asp-validation-for="Avion.GodinaProizvodnje" class="text-danger"></span>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Avion.KompanijaId"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.Avion.KompanijaId, Model.ListaKompanija,
+                                                "- Molimo izaberite kompaniju -", new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Avion.Kapacitet"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Avion.Kapacitet" class="form-control" />
-                    <span asp-validation-for="Avion.Kapacitet" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Avion.KompanijaId"></label>
-                </div>
-                <div class="col-8">
-                    @Html.DropDownListFor(m => m.Avion.KompanijaId, Model.ListaKompanija,
-                                            "- Molimo izaberite kompaniju -", new { @class = "form-control" })
-                </div>
-            </div>
 
 
-            <div class="form-group row">
-                <div class="col-8 offset-4">
-                    @if (Model.Avion.Id != 0)
-                    {
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+                        @if (Model.Avion.Id != 0)
+                        {
 
-                        <partial name="_EditAndBackToListButton" model="Model.Avion.Id" />
-                    }
-                    else
-                    {
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            <partial name="_EditAndBackToListButton" model="Model.Avion.Id" />
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                </div>
+                                <div class="col">
+                                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                                </div>
                             </div>
-                            <div class="col">
-                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-
 </form>
 
 @section Scripts{

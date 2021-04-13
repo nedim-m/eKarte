@@ -6,52 +6,53 @@
 }
 
 <br />
-<div class="border ">
-    <div class="row">
-        <div class="col-6">
-            <h2 class="text-primary">@Model.Let.Naziv</h2>
+<div class="container">
+    <div class="border ">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-primary">@Model.Let.Naziv</h2>
+
+            </div>
 
         </div>
-        
+        <br />
+        <br />
+        <table id="tblData" class=" table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Tip Osoblja</th>
+                    <th>Spol</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
     </div>
-    <br />
-    <br />
-    <table id="tblData" class=" table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Ime</th>
-                <th>Prezime</th>
-                <th>Tip Osoblja</th>
-                <th>Spol</th>
-                <th></th>
-            </tr>
-        </thead>
-    </table>
-</div>
 
-<br />
-<div class="border ">
-    <div class="row">
-        <div class="col-6">
-            <h2 class="text-primary">Osoblje na letu</h2>
+    <br />
+    <div class="border ">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-primary">Osoblje na letu</h2>
+            </div>
+
         </div>
-
+        <br />
+        <br />
+        <table id="tblData2" class=" table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Tip Osoblja</th>
+                    <th>Spol</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
     </div>
-    <br />
-    <br />
-    <table id="tblData2" class=" table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Ime</th>
-                <th>Prezime</th>
-                <th>Tip Osoblja</th>
-                <th>Spol</th>
-                <th></th>
-            </tr>
-        </thead>
-    </table>
 </div>
-
 @section Scripts{
 
     <script src="~/js/detaljileta.js"></script>

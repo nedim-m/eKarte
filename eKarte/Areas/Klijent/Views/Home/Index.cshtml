@@ -1,9 +1,214 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+<div>
+    <div class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+        <img class="w3-image" src="imgs/worldWonder.jpg" alt="London" width="1500" height="700">
+        <div class="w3-display-middle" style="width:65%">
+            <div class="w3-bar w3-black">
+                <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Let');">
+                    <i class="fa fa-plane w3-margin-right"></i>Let
+                </button>
+                <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Autobus');">
+                    <i class="fa fa-bus w3-margin-right"></i>Autobus
+                </button>
+            </div>
+
+            <!-- Tabs -->
+            <div id="Let" class="w3-container w3-white w3-padding-16 myLink">
+                <h3>Putujte sa nama</h3>
+                <div class="w3-row-padding" style="margin:0 -16px;">
+                    <div class="w3-half">
+                        <label>Od</label>
+                        <input class="w3-input w3-border" type="text" placeholder="Aerodrom">
+                    </div>
+                    <div class="w3-half">
+                        <label>Do</label>
+                        <input class="w3-input w3-border" type="text" placeholder="Aerodrom">
+                    </div>
+                </div>
+                <br>
+                <div class="w3-half">
+                    <label for="povratnaLet">Povratna</label>
+                    <input type="checkbox" id="povratnaLet" name="povratnaLet" value="Povratna">
+                </div>
+                <div class="w3-half">
+                    <label for="datumlet">Odaberite datum:  </label>
+                    <input type="date" id="datumlet" name="datumlet" value="">
+                </div><br><br>
+                <div>
+                    <label for="male">Prva Klasa </label>
+                    <input type="radio" id="prvaKlasa" name="klase" value="prvaKlasa">
+                    &nbsp;&nbsp;
+                    <label for="female">Economy Class </label>
+                    <input type="radio" id="ekonomska" name="klase" value="ekonomskaKlasa">
+                    &nbsp;&nbsp;
+                    <label for="other">Biznis Klasa</label>
+                    <input type="radio" id="biznisKlasa" name="klase" value="biznisKlasa">
+
+                    <p><button class="w3-button w3-dark-grey">Pretraga</button></p>
+                </div>
+            </div>
+
+            <div id="Autobus" class="w3-container w3-white w3-padding-16 myLink">
+                <h3>Putujte sa nama</h3>
+                <div class="w3-row-padding" style="margin:0 -16px;">
+                    <div class="w3-half">
+                        <label>Od</label>
+                        <input class="w3-input w3-border" type="text" placeholder="Stanica Polaska">
+                    </div>
+                    <div class="w3-half">
+                        <label>Do</label>
+                        <input class="w3-input w3-border" type="text" placeholder="Stanica Dolaska">
+                    </div>
+                </div>
+                <br>
+                <div class="w3-half">
+                    <label for="povratnaBus">Povratna</label>
+                    <input type="checkbox" id="povratnaBus" name="povratnaBus" value="Povratna">
+                </div>
+                <div class="w3-half">
+                    <label for="datumBus">Odaberite datum: </label>
+                    <input type="date" id="datumBus" name="datumBus" value="">
+                </div>
+                <p><button class="w3-button w3-dark-grey">Pretraga</button></p>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:1100px;">
+
+        <!-- Good offers -->
+        <div class="w3-container w3-margin-top">
+            <h3>Posebne ponude </h3>
+            <h6>Do <strong>50%</strong> popusta.</h6>
+        </div>
+        <div class="w3-row-padding w3-text-white w3-large">
+            <div class="w3-half w3-margin-bottom">
+                <div class="w3-display-container">
+                    <img src="imgs/cinqueterre.jpg" alt="Cinque Terre" style="width:100%">
+                    <span class="w3-display-bottomleft w3-padding">Cinque Terre</span>
+                </div>
+            </div>
+            <div class="w3-half">
+                <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container">
+                            <img src="imgs/newyork2.jpg" alt="New York" style="width:100%">
+                            <span class="w3-display-bottomleft w3-padding">New York</span>
+                        </div>
+                    </div>
+                    <div class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container">
+                            <img src="imgs/sanfran.jpg" alt="San Francisco" style="width:100%">
+                            <span class="w3-display-bottomleft w3-padding">San Francisco</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container">
+                            <img src="imgs/pisa.jpg" alt="Pisa" style="width:100%">
+                            <span class="w3-display-bottomleft w3-padding">Pisa</span>
+                        </div>
+                    </div>
+                    <div class="w3-half w3-margin-bottom">
+                        <div class="w3-display-container">
+                            <img src="imgs/paris.jpg" alt="Paris" style="width:100%">
+                            <span class="w3-display-bottomleft w3-padding">Paris</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Explore Nature -->
+        <div class="w3-container">
+            <h3>Istražite prirodu</h3>
+            <p>Putujte sa nama i doživite nezaboravne trenutke.</p>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-half w3-margin-bottom">
+                <img src="imgs/ocean2.jpg" alt="Norway" style="width:100%">
+                <div class="w3-container w3-white">
+                    <h3>Zapadna obala, Norveška</h3>
+                    <p class="w3-opacity">Putovanje od samo BAM 79</p>
+                    <p>Opis neki opis neki opis neki.</p>
+                    <button class="w3-button w3-margin-bottom">Kupite kartu</button>
+                </div>
+            </div>
+            <div class="w3-half w3-margin-bottom">
+                <img src="imgs/mountains2.jpg" alt="Austria" style="width:100%">
+                <div class="w3-container w3-white">
+                    <h3>Planinarenje, Austria</h3>
+                    <p class="w3-opacity">Jedan smjer od BAM 39</p>
+                    <p>Opis neki opis neki opis neki.</p>
+                    <button class="w3-button w3-margin-bottom">Kupite kartu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="w3-container">
+            <div class="w3-panel w3-padding-16 w3-black w3-opacity w3-card w3-hover-opacity-off">
+                <h2>Pretplatite se za najbolje ponude</h2>
+                <p>Pridružite se našem newsletteru.</p>
+                <label>E-mail</label>
+                <input class="w3-input w3-border" type="text" placeholder="Vaša Email adresa">
+                <button type="button" class="w3-button w3-red w3-margin-top">Pretplatite se</button>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="w3-container">
+            <h2>Kontakt</h2>
+            <p>Javite se i rezervišite putovanje!</p>
+            <i class="fa fa-map-marker" style="width:30px"></i> Mostar, BiH<br>
+            <i class="fa fa-phone" style="width:30px"></i> Tel: +00 151515<br>
+            <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+            <form action="/action_page.php" target="_blank">
+                <p>
+                    <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name">
+                </p>
+                <p>
+                    <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required
+                           name="Email">
+                </p>
+                <p>
+                    <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required
+                           name="Message">
+                </p>
+                <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
+            </form>
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+  
+   
+
+    <script>
+        // Tabs
+        function openLink(evt, linkName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("myLink");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(linkName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
+        }
+
+        // Click on the first tablink on load
+        document.getElementsByClassName("tablink")[0].click();
+    </script>
 </div>
-

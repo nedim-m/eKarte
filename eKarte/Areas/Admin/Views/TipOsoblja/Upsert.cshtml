@@ -7,56 +7,57 @@
 }
 
 <form method="post" asp-action="Upsert">
+    <br />
+    <div class="container">
+        <div class="row px-2 mx-2 border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.Id != 0)
+            {
+                <input type="hidden" asp-for="Id" />
+                title = "Edit Tipova";
+            }
 
-    <div class="row px-2 mx-2 border">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @if (Model.Id != 0)
-        {
-            <input type="hidden" asp-for="Id" />
-            title = "Edit Tipova";
-        }
+            <div class="col-12">
+                <h2 class="text-primary">@title</h2>
+                <br />
+            </div>
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Naziv"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Naziv" class="form-control" />
+                        <span asp-validation-for="Naziv" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Oznaka"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="radio" name="oznaka" asp-for="Oznaka" value="@StaticData.OznakaAvion" /> Avion
+                        <input type="radio" name="oznaka" asp-for="Oznaka" value="@StaticData.OznakaBus" /> Bus
+                        <span asp-validation-for="Oznaka" class="text-danger"></span>
+                    </div>
+                </div>
 
-        <div class="col-12">
-            <h2 class="text-primary">@title</h2>
-            <br />
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+                        @if (Model.Id != 0)
+                        {
+
+                            <partial name="_EditAndBackToListButton" model="Model.Id" />
+                        }
+                        else
+                        {
+
+                            <partial name="_CreateAndBackToListButton" />
+                        }
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-8">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Naziv"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Naziv" class="form-control" />
-                    <span asp-validation-for="Naziv" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Oznaka"></label>
-                </div>
-                <div class="col-8">
-                    <input type="radio" name="oznaka" asp-for="Oznaka" value="@StaticData.OznakaAvion" /> Avion
-                    <input type="radio" name="oznaka" asp-for="Oznaka" value="@StaticData.OznakaBus"  /> Bus
-                    <span asp-validation-for="Oznaka" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-8 offset-4">
-                    @if (Model.Id != 0)
-                    {
-
-                        <partial name="_EditAndBackToListButton" model="Model.Id" />
-                    }
-                    else
-                    {
-
-                        <partial name="_CreateAndBackToListButton" />
-                    }
-                </div>
-            </div>
-        </div>
-
     </div>
-
 </form>

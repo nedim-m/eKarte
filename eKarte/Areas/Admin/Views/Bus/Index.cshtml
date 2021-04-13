@@ -2,53 +2,54 @@
     Layout = "~/Views/shared/_Layout.cshtml";
 }
 <br />
-<div class="border ">
-    <div class="row">
-        <div class="col-6">
-            <h2 class="text-primary">Lista autobusa</h2>
+<div class="container">
+    <div class="border  ">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-primary">Lista autobusa</h2>
+            </div>
+            <div class="col-6 text-right">
+                <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; Dodaj autobus</a>
+            </div>
         </div>
-        <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp; Dodaj autobus</a>
-        </div>
+
+        <br />
+        <br />
+
+        <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Naziv
+                    </th>
+                    <th>
+                        Model
+                    </th>
+                    <th>
+                        Proizvodjac
+                    </th>
+                    <th>
+                        Godina proizvodnje
+                    </th>
+                    <th>
+                        Registracijska oznaka
+                    </th>
+                    <th>
+                        Kapacitet
+                    </th>
+                    <th>
+                        Tip busa
+                    </th>
+                    <th>
+                        Kompanija
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+        </table>
     </div>
-
-    <br />
-    <br />
-
-    <table id="tblData" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>
-                    Naziv
-                </th>
-                <th>
-                    Model
-                </th>
-                <th>
-                    Proizvodjac
-                </th>
-                <th>
-                    Godina proizvodnje
-                </th>
-                <th>
-                    Registracijska oznaka
-                </th>
-                <th>
-                    Kapacitet
-                </th>
-                <th>
-                    Tip busa
-                </th>
-                <th>
-                    Kompanija
-                </th>
-                <th>
-
-                </th>
-            </tr>
-        </thead>
-    </table>
-
 </div>
 @section Scripts{
 
