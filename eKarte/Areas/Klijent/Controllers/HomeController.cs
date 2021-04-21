@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using eKarte.Models;
+using eKarte.DataAccess.Data.Repository.IRepository;
 
 namespace eKarte.Controllers
 {
@@ -13,15 +14,22 @@ namespace eKarte.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
+
+
+
 
         public IActionResult Index()
         {
-            return View();
+            var klaseAvioKarte = _unitOfWork.KlasaAvioKarte.GetAll();
+            
+            return View(klaseAvioKarte);
         }
 
         public IActionResult Privacy()

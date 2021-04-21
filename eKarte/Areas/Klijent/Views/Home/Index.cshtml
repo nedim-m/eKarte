@@ -1,6 +1,4 @@
-﻿
-
-
+﻿@model List<eKarte.Models.KlasaAvioKarte>
 
 <div>
     <div class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
@@ -16,40 +14,46 @@
             </div>
 
             <!-- Tabs -->
+
             <div id="Let" class="w3-container w3-white w3-padding-16 myLink">
                 <h3>Putujte sa nama</h3>
                 <div class="w3-row-padding" style="margin:0 -16px;">
                     <div class="w3-half">
                         <label>Od</label>
-                        <input class="w3-input w3-border" type="text" placeholder="Aerodrom">
+                        <input class="w3-input w3-border" name="aerodromOd" id="aerodromOdId" type="text" placeholder="Aerodrom">
                     </div>
                     <div class="w3-half">
                         <label>Do</label>
-                        <input class="w3-input w3-border" type="text" placeholder="Aerodrom">
+                        <input class="w3-input w3-border" name="aerodromDo" id="aerodromDoId" type="text" placeholder="Aerodrom">
                     </div>
                 </div>
                 <br>
                 <div class="w3-half">
                     <label for="povratnaLet">Povratna</label>
-                    <input type="checkbox" id="povratnaLet" name="povratnaLet" value="Povratna">
+                    <input type="checkbox" id="povratnaLetId" name="povratnaLet" value="Povratna">
                 </div>
                 <div class="w3-half">
                     <label for="datumlet">Odaberite datum:  </label>
-                    <input type="date" id="datumlet" name="datumlet" value="">
+                    <input type="date" id="datumletId" name="datumlet" value="">
                 </div><br><br>
                 <div>
-                    <label for="male">Prva Klasa </label>
-                    <input type="radio" id="prvaKlasa" name="klase" value="prvaKlasa">
-                    &nbsp;&nbsp;
-                    <label for="female">Economy Class </label>
-                    <input type="radio" id="ekonomska" name="klase" value="ekonomskaKlasa">
-                    &nbsp;&nbsp;
-                    <label for="other">Biznis Klasa</label>
-                    <input type="radio" id="biznisKlasa" name="klase" value="biznisKlasa">
 
-                    <p><button class="w3-button w3-dark-grey">Pretraga</button></p>
+                    <label>@Model[0].Naziv</label>
+                    <input type="radio" name="klasa" id="klasa0" value=@Model[0].Id>
+                    &nbsp; &nbsp;
+                    <label>@Model[1].Naziv </label>
+                    <input type="radio" name="klasa" id="klasa1" value=@Model[1].Id>
+                    &nbsp; &nbsp;
+                    <label>@Model[2].Naziv</label>
+                    <input type="radio" name="klasa" id="klasa2" value=@Model[2].Id checked>
+
+
+
+                    <p><button class="w3-button w3-dark-grey " onclick="getResult()">Pretraga</button></p>
+
                 </div>
             </div>
+
 
             <div id="Autobus" class="w3-container w3-white w3-padding-16 myLink">
                 <h3>Putujte sa nama</h3>
@@ -76,11 +80,14 @@
             </div>
 
 
+
         </div>
     </div>
 
     <!-- Page content -->
     <div class="w3-content" style="max-width:1100px;">
+        <div id="resultId" class="container">
+        </div>
 
         <!-- Good offers -->
         <div class="w3-container w3-margin-top">
@@ -189,26 +196,14 @@
         <!-- End page content -->
     </div>
 
-  
-   
 
-    <script>
-        // Tabs
-        function openLink(evt, linkName) {
-            var i, x, tablinks;
-            x = document.getElementsByClassName("myLink");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < x.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" w3-blue", "");
-            }
-            document.getElementById(linkName).style.display = "block";
-            evt.currentTarget.className += " w3-blue";
-        }
 
-        // Click on the first tablink on load
-        document.getElementsByClassName("tablink")[0].click();
-    </script>
+
+
+
+
 </div>
+@section Scripts
+{
+    <script src="~/js/index.js"></script>
+}
