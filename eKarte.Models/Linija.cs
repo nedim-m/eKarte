@@ -34,13 +34,9 @@ namespace eKarte.Models
         public int StanicaZadnjaId { get; set; }
         public virtual Stanica StanicaZadnja { get; set; }
         [Required]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
         [DisplayName("Polazak busa sa stanice vrijeme")]
         public DateTime PolazakVrijeme { get; set; }
         [Required]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
         [DisplayName("Dolazak busa na stanicu vrijeme")]
         public DateTime DolazakVrijeme { get; set; }
         [Required]

@@ -16,8 +16,6 @@ namespace eKarte.Models.ViewModels
         public int StanicaPolaskaId { get; set; }
         public IEnumerable<SelectListItem> StanicaLista { get; set; }
      
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         [DisplayName("Polazak busa sa stanice")]
         public DateTime PolazakVrijeme { get; set; }
 
@@ -26,9 +24,7 @@ namespace eKarte.Models.ViewModels
         [DisplayName("Stanica Dolaska")]
         public int StanicaDolaskaId { get; set; }
         [Required]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        [DisplayName("Dolazak busa na stanicu vrijeme")]
+        [DisplayName("Dolazak busa na stanicu")]
         public DateTime DolazakaVrijeme { get; set; }
 
         [Required]

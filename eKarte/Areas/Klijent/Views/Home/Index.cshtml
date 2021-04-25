@@ -1,5 +1,7 @@
 ﻿@model List<eKarte.Models.KlasaAvioKarte>
-
+@{ 
+    var podaci = (List<VrstaKarte>) ViewData["VrstaKarte"];
+}
 <div>
     <div class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
         <img class="w3-image" src="imgs/worldWonder.jpg" alt="London" width="1500" height="700">
@@ -54,32 +56,47 @@
                 </div>
             </div>
 
-
-            <div id="Autobus" class="w3-container w3-white w3-padding-16 myLink">
-                <h3>Putujte sa nama</h3>
-                <div class="w3-row-padding" style="margin:0 -16px;">
+           
+                <div id="Autobus" class="w3-container w3-white w3-padding-16 myLink">
+                    <h3>Putujte sa nama</h3>
+                    <div class="w3-row-padding" style="margin:0 -16px;">
+                        <div class="w3-half">
+                            <label>Od</label>
+                            <input class="w3-input w3-border" name="StanicaPocetna" id="StanicaPocetnaId" type="text" placeholder="Stanica Polaska">
+                        </div>
+                        <div class="w3-half">
+                            <label>Do</label>
+                            <input class="w3-input w3-border" name="StanicaZadnja" id="StanicaZadnjaId" type="text" placeholder="Stanica Dolaska">
+                        </div>
+                    </div>
+                    <br>
                     <div class="w3-half">
-                        <label>Od</label>
-                        <input class="w3-input w3-border" type="text" placeholder="Stanica Polaska">
+                        <label for="povratnaBus">Povratna</label>
+                        <input type="checkbox" id="povratnaBusId" name="povratnaBus" value="Povratna">
                     </div>
                     <div class="w3-half">
-                        <label>Do</label>
-                        <input class="w3-input w3-border" type="text" placeholder="Stanica Dolaska">
+                        <label for="datumBus">Odaberite datum: </label>
+                        <input type="date" id="datumBusId" name="datumBus" value="">
+                    </div>
+                    <div>
+
+                        <label>@podaci[0].Naziv</label>
+                        <input type="radio" name="vrsta" id="vrsta0" value=@podaci[0].Id>
+                        &nbsp; &nbsp;
+                        <label>@podaci[1].Naziv</label>
+                        <input type="radio" name="vrsta" id="vrsta1" value=@podaci[1].Id>
+                        &nbsp; &nbsp;
+                        <label>@podaci[2].Naziv</label>
+                        <input type="radio" name="vrsta" id="vrsta2" value=@podaci[2].Id>
+                        &nbsp; &nbsp;
+                        <label>@podaci[3].Naziv</label>
+                        <input type="radio" name="vrsta" id="vrsta3" value=@podaci[3].Id checked>
+                        <p><button class="w3-button w3-dark-grey " onclick="getResult2()">Pretraga</button></p>
+                        
                     </div>
                 </div>
-                <br>
-                <div class="w3-half">
-                    <label for="povratnaBus">Povratna</label>
-                    <input type="checkbox" id="povratnaBus" name="povratnaBus" value="Povratna">
-                </div>
-                <div class="w3-half">
-                    <label for="datumBus">Odaberite datum: </label>
-                    <input type="date" id="datumBus" name="datumBus" value="">
-                </div>
-                <p><button class="w3-button w3-dark-grey">Pretraga</button></p>
-            </div>
 
-
+            
 
         </div>
     </div>
@@ -206,4 +223,6 @@
 @section Scripts
 {
     <script src="~/js/index.js"></script>
+    
+
 }

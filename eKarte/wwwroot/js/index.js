@@ -47,3 +47,32 @@ function getResult() {
 
 }
 
+
+function getResult2() {
+    var od = $("#StanicaPocetnaId").val();
+    var doB = $("#StanicaZadnjaId").val();
+
+    var datB = $("#datumBusId").val();
+    var vrste = $('input[name="vrsta"]:checked').val();
+    if ($("#povratnaBusId").prop("checked"))
+        var PovB = $("#povratnaBusId").val();
+    else
+        var PovB = null;
+
+
+
+    var url = "/Klijent/Search/GetAllLinije?StanicaPocetna=" + od + "&StanicaZadnja=" + doB + "&povratnaBus=" + PovB + "&datumBus=" + datB + " &vrste=" + vrste;
+   
+  
+    $.get(url, function (result) {
+
+      
+        $("#resultId").html(result);
+
+    })
+        .fail(function () {
+            aler("Greska na serveru. Pokušajte ponovo!");
+        });
+
+}
+

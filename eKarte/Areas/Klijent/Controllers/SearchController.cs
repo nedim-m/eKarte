@@ -1,4 +1,5 @@
 ﻿using eKarte.DataAccess.Data.Repository.IRepository;
+using eKarte.Models;
 using eKarte.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,8 +22,10 @@ namespace eKarte.Areas.Klijent.Controllers
 
         public SearchViewModel SearchVM { get; set; }
         List<SearchViewModel> ListaRezultata = new List<SearchViewModel>();
-
-
+        public SearchViewModelBus SearchVMBus { get; set; }
+        List<SearchViewModelBus> ListaRezultataBus = new List<SearchViewModelBus>();
+        public SearchViewModelBus2 SearchVMBus2 { get; set; }
+        List<SearchViewModelBus2> ListaRezultataBus2 = new List<SearchViewModelBus2>();
 
         [HttpGet]
         public IActionResult GetAll(string aerodromOd, string aerodromDo, string povratnaLet, DateTime datumlet, int klase)
@@ -84,6 +87,129 @@ namespace eKarte.Areas.Klijent.Controllers
             return View(ListaRezultata);
 
         }
+        [HttpGet]
+        public IActionResult GetAllLinije(string StanicaPocetna, string StanicaZadnja, string povratnaBus, DateTime datumBus, int vrste)
+        {
+
+
+            if (datumBus.Date.CompareTo(DateTime.Now.Date) < 0)
+            {
+                datumBus = DateTime.Now.Date;
+            }
+            List<Models.Linija> linije = new List<Models.Linija>();
+
+            if (StanicaPocetna == null && StanicaZadnja != null)
+            {
+                linije = _unitOfWork.Linija.GetAll(includeProperties: "StanicaZadnja,StanicaZadnja.Grad,StanicaPocetna,StanicaPocetna.Grad", filter: x => x.PolazakVrijeme.Date.CompareTo(datumBus) == 0)
+                    .Where(i => i.StanicaZadnja.Grad.Naziv.ToLower() == StanicaZadnja.ToLower()).ToList();
+            }
+            else if (StanicaZadnja == null && StanicaPocetna != null)
+            {
+                linije = _unitOfWork.Linija.GetAll(includeProperties: "StanicaZadnja,StanicaZadnja.Grad,StanicaPocetna,StanicaPocetna.Grad",filter: x => x.PolazakVrijeme.Date.CompareTo(datumBus) == 0)
+                    .Where(i => i.StanicaPocetna.Grad.Naziv.ToLower() == StanicaPocetna.ToLower()).ToList();
+            }
+            else if (StanicaZadnja != null && StanicaPocetna != null)
+            {
+
+                linije = _unitOfWork.Linija.GetAll(includeProperties: "StanicaZadnja,StanicaZadnja.Grad,StanicaPocetna,StanicaPocetna.Grad", filter: x => x.PolazakVrijeme.Date.CompareTo(datumBus) == 0)
+                    .Where(i => i.StanicaPocetna.Grad.Naziv.ToLower() == StanicaPocetna.ToLower() && i.StanicaZadnja.Grad.Naziv.ToLower() == StanicaZadnja.ToLower()).ToList();
+            }
+            else
+            {
+                return View();
+            }
+            double cijenaFaktor = 1;
+            double povratnaCijena = 0;
+            var karte = _unitOfWork.VrstaKarte.GetAll();
+            foreach(var i in karte)
+            {
+                if (i.Id == vrste)
+                {
+                    cijenaFaktor = (100 - i.Popust) / 100;
+                }
+                
+
+            }
+            if (cijenaFaktor == 0)
+                cijenaFaktor = 1;
+
+            if (povratnaBus != "null")
+            {
+                povratnaCijena = 0.3;
+            }
+            foreach (var i in linije)
+            {
+                SearchVMBus = new SearchViewModelBus()
+                {
+                    VrstaBusKarte = _unitOfWork.VrstaKarte.Get(vrste),
+                    Linije = i,
+                    Povratna = povratnaBus,
+                    datum=i.PolazakVrijeme,
+                    Cijena = (i.OsnovnaCijenaLinije + (i.OsnovnaCijenaLinije * povratnaCijena)) * cijenaFaktor
+                };
+                ListaRezultataBus.Add(SearchVMBus);
+            }
+            if (datumBus.Date.CompareTo(DateTime.Now.Date) < 0)
+            {
+                datumBus = DateTime.Now.Date;
+            }
+            List<Models.StanicaLinija> linije2 = new List<Models.StanicaLinija>();
+
+            if (StanicaPocetna == null && StanicaZadnja != null)
+            {
+                linije2 = _unitOfWork.StanicaLinija.GetAll(includeProperties: "StanicaOdrediste,StanicaOdrediste.Grad,StanicaPolaziste,StanicaPolaziste.Grad", filter: x => x.PolazakVrijeme.Date.CompareTo(datumBus) == 0)
+                    .Where(i => i.StanicaOdrediste.Grad.Naziv.ToLower() == StanicaZadnja.ToLower()).ToList();
+            }
+            else if (StanicaZadnja == null && StanicaPocetna != null)
+            {
+                linije2 = _unitOfWork.StanicaLinija.GetAll(includeProperties: "StanicaOdrediste,StanicaOdrediste.Grad,StanicaPolaziste,StanicaPolaziste.Grad" ,filter: x => x.PolazakVrijeme.Date.CompareTo(datumBus) == 0)
+                    .Where(i => i.StanicaPolaziste.Grad.Naziv.ToLower() == StanicaPocetna.ToLower()).ToList();
+            }
+            else if (StanicaZadnja != null && StanicaPocetna != null)
+            {
+
+                linije2 = _unitOfWork.StanicaLinija.GetAll(includeProperties: "StanicaOdrediste,StanicaOdrediste.Grad,StanicaPolaziste,StanicaPolaziste.Grad", filter: x => x.PolazakVrijeme.Date.CompareTo(datumBus) == 0)
+                    .Where(i => i.StanicaPolaziste.Grad.Naziv.ToLower() == StanicaPocetna.ToLower() && i.StanicaOdrediste.Naziv.ToLower() == StanicaZadnja.ToLower()).ToList();
+            }
+            else
+            {
+                return View();
+            }
+            cijenaFaktor = 1;
+              povratnaCijena = 0;
+            foreach (var i in karte)
+            {
+                if (i.Id == vrste)
+                {
+                    cijenaFaktor = (100-i.Popust)/100;
+                }
+                
+
+            }
+            if (cijenaFaktor == 0)
+                cijenaFaktor = 1;
+            if (povratnaBus != "null")
+            {
+                povratnaCijena = 0.3;
+            }
+            foreach (var i in linije2)
+            {
+                SearchVMBus2 = new SearchViewModelBus2()
+                {
+                    VrstaBusKarte = _unitOfWork.VrstaKarte.Get(vrste),
+                    Linije = i,
+                    Povratna = povratnaBus,
+                    datum=i.PolazakVrijeme,
+                    Cijena = (i.Cijena + (i.Cijena * povratnaCijena)) * cijenaFaktor
+                };
+                ListaRezultataBus2.Add(SearchVMBus2);
+            }
+            ViewData["Lista2"] = ListaRezultataBus2;
+
+            return View(ListaRezultataBus);
+
+        }
+
 
 
     }

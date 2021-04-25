@@ -21,14 +21,10 @@ namespace eKarte.Models
         public int StanicaOdredisteId { get; set; }
         public virtual Stanica StanicaOdrediste { get; set; }
         [Required]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
-        [DisplayName("Polazak busa na stanicu vrijeme")]
+        [DisplayName("Polazak busa")]
         public DateTime PolazakVrijeme { get; set; }
         [Required]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm:ss tt}")]
-        [DisplayName("Dolazak busa na stanicu vrijeme")]
+        [DisplayName("Dolazak busa")]
         public DateTime DolazakVrijeme { get; set; }
         [Required]
         [Range(1,1000)]

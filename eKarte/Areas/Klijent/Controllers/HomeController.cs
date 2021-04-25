@@ -28,6 +28,8 @@ namespace eKarte.Controllers
         public IActionResult Index()
         {
             var klaseAvioKarte = _unitOfWork.KlasaAvioKarte.GetAll();
+            List<VrstaKarte> vrsteKarte = (List<VrstaKarte>)_unitOfWork.VrstaKarte.GetAll();
+            ViewData["VrstaKarte"] = vrsteKarte;
             
             return View(klaseAvioKarte);
         }

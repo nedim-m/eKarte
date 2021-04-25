@@ -1,0 +1,54 @@
+﻿@model List<eKarte.Models.ViewModels.SearchViewModelBus>
+
+@{
+    Layout = null;
+    var podaci = (List<eKarte.Models.ViewModels.SearchViewModelBus2>)ViewData["Lista2"];
+
+}
+
+
+@if (Model.Count() > 0)
+{
+
+
+    <div>
+
+        <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+            @foreach (var obj in Model)
+            {
+            <tr>
+                <td width="20%">@obj.Linije.StanicaPocetna.Grad.Naziv</td>
+                <td width="15%">@obj.Linije.StanicaZadnja.Grad.Naziv</td>
+                <td width="15%">@obj.datum</td>
+                <td width="10%">@obj.Cijena</td>
+                <td width="10%"><a class="btn btn-success">Kupi</a></td>
+
+
+            </tr>
+            }
+            @foreach(var obj in podaci)
+            {
+        <tr>
+            <td width="20%">@obj.Linije.StanicaPolaziste.Grad.Naziv</td>
+            <td width="15%">@obj.Linije.StanicaOdrediste.Grad.Naziv</td>
+            <td width="15%">@obj.datum</td>
+            <td width="10%">@obj.Cijena</td>
+            <td width="10%"><a class="btn btn-success">Kupi</a></td>
+
+
+        </tr>
+            }
+
+
+
+
+
+
+        </table>
+    </div>
+}
+else
+{
+    <h2 class="text-center text-danger">Žao nam je odabrani linija ne postoji</h2>
+}
+
