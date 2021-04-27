@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using eKarte.DataAccess.Data;
 using eKarte.DataAccess.Data.Repository;
 using eKarte.DataAccess.Data.Repository.IRepository;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using eKarte.Utility;
 
 namespace eKarte
 {
@@ -30,10 +32,15 @@ namespace eKarte
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                  options.UseSqlServer(
+                      Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+
+            services.AddSingleton<IEmailSender, EmailSender>();
+
             services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
             services.AddRazorPages();
 

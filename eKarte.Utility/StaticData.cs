@@ -21,6 +21,9 @@ namespace eKarte.Utility
 
         public const string Da = "DA";
         public const string Ne = "NE";
+
+        public const string Admin = "Administrator";
+        public const string User = "Korisnik";
        
     }
 }
