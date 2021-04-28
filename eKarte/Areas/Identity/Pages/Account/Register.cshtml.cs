@@ -85,21 +85,24 @@ namespace eKarte.Areas.Identity.Pages.Account
                     {
                         await _roleManager.CreateAsync(new IdentityRole(StaticData.User));
                         await _roleManager.CreateAsync(new IdentityRole(StaticData.Admin));
+                        await _userManager.AddToRoleAsync(user, StaticData.Admin);//Prvi registrovani korisnik ima privilegija Administratora ostali imaju prvilegije Usera
                     }
-                    await _userManager.AddToRoleAsync(user, StaticData.User);
-
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, StaticData.User);
+                    }
                     _logger.LogInformation("User created a new account with password.");
 
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    //var callbackUrl = Url.Page(
-                    //    "/Account/ConfirmEmail",
-                    //    pageHandler: null,
-                    //    values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                    //    protocol: Request.Scheme);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                        protocol: Request.Scheme);
 
-                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Potvrdite Vaš email",
+                        $"Molim Vas potvrdite Vaš Nalog  <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>click me </a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

@@ -37,11 +37,11 @@
             <div>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button w3-text-blue w3-hover-blue">
                     <b>
-                        <i class="fa fa-map-marker w3-margin-right"></i>eKarte
+                        <i class="fa fa-map-marker w3-margin-right text-danger"></i>eKarte
                     </b>
                 </a>
-
-                <a asp-area="Identity" asp-page="/Account/Login" class="w3-bar-item w3-button w3-right w3-hover-blue w3-text-grey"><i class="fas fa-sign-in-alt"></i></a>
+                <a><partial name="_LoginPartial" /></a>
+               
                 
                 <a asp-area="Admin" asp-controller="Menu" asp-action="Index" class="w3-bar-item w3-button w3-right w3-hover-blue w3-text-grey"><i class="fas fa-cogs"></i></a>
                 
