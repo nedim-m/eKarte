@@ -1,6 +1,7 @@
 ﻿using eKarte.DataAccess.Data.Repository.IRepository;
 using eKarte.Models;
 using eKarte.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace eKarte.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticData.Admin)]
     public class KlasaAvioKarteController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

@@ -2,6 +2,7 @@
 using eKarte.Models;
 using eKarte.Models.ViewModels;
 using eKarte.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace eKarte.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticData.Admin)]
     public class StanicaLinijaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

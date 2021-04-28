@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using eKarte.Utility
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,9 +44,9 @@
                 </a>
                 <a><partial name="_LoginPartial" /></a>
                
-                
+               @if (User.IsInRole(StaticData.Admin)) {
                 <a asp-area="Admin" asp-controller="Menu" asp-action="Index" class="w3-bar-item w3-button w3-right w3-hover-blue w3-text-grey"><i class="fas fa-cogs"></i></a>
-                
+               }
             </div>
 
         </nav>

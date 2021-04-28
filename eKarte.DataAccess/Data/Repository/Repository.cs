@@ -1,4 +1,6 @@
 ﻿using eKarte.DataAccess.Data.Repository.IRepository;
+using eKarte.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Text;
 
 namespace eKarte.DataAccess.Data.Repository
 {
+   
     public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly DbContext Context;
