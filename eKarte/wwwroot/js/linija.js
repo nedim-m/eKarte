@@ -21,7 +21,7 @@ function loadDataTable() {
             { "data": "polazakVrijeme", "width": "10%" },
             { "data": "dolazakVrijeme", "width": "10%" },
             { "data": "osnovnaCijenaLinije", "width": "10%" },
-
+            { "data": "svakodnevna", "width":"10%"},
 
 
             {

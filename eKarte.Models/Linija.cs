@@ -42,5 +42,6 @@ namespace eKarte.Models
         [Required]
         [DisplayName("Osnovna cijena")]
         public double OsnovnaCijenaLinije { get; set; }
+        public bool Svakodnevna { get; set; }
     }
 }

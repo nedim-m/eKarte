@@ -32,7 +32,7 @@ namespace eKarte.Models
         [Required]
         [DisplayName("Tip osoblja")]
         public int TipOsobljaId { get; set; }
-        [Required]
+      
         public virtual TipOsoblja TipOsoblja { get; set; }
         [DisplayName("Spol")]
         public int SpolId { get; set; }

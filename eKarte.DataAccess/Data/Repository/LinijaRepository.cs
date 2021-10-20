@@ -25,6 +25,7 @@ namespace eKarte.DataAccess.Data.Repository
             objFromDb.DolazakVrijeme = Linija.DolazakVrijeme;
             objFromDb.OsnovnaCijenaLinije = Linija.OsnovnaCijenaLinije;
             objFromDb.BusId = Linija.BusId;
+            objFromDb.Svakodnevna = Linija.Svakodnevna;
             _db.SaveChanges();
         }
     }

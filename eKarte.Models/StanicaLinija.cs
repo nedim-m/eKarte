@@ -30,7 +30,7 @@ namespace eKarte.Models
         [Range(1,1000)]
         [DisplayName("Osnovna cijena")]
         public double Cijena { get; set; }
-
+    
 
 
 
