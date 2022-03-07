@@ -6,18 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Angular\**" />
     <Compile Remove="Areas\Admin\Views\NewFolder\**" />
     <Compile Remove="wwwroot\menuicon\**" />
     <Compile Remove="wwwroot\NewFolder1\**" />
     <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="Angular\**" />
     <Content Remove="Areas\Admin\Views\NewFolder\**" />
     <Content Remove="wwwroot\menuicon\**" />
     <Content Remove="wwwroot\NewFolder1\**" />
     <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="Angular\**" />
     <EmbeddedResource Remove="Areas\Admin\Views\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\menuicon\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="Angular\**" />
     <None Remove="Areas\Admin\Views\NewFolder\**" />
     <None Remove="wwwroot\menuicon\**" />
     <None Remove="wwwroot\NewFolder1\**" />

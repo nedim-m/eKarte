@@ -43,10 +43,11 @@
                     </b>
                 </a>
                 <a><partial name="_LoginPartial" /></a>
-               
-               @if (User.IsInRole(StaticData.Admin)) {
-                <a asp-area="Admin" asp-controller="Menu" asp-action="Index" class="w3-bar-item w3-button w3-right w3-hover-blue w3-text-grey"><i class="fas fa-cogs"></i></a>
-               }
+
+                @if (User.IsInRole(StaticData.Admin))
+                {
+                    <a asp-area="Admin" asp-controller="Menu" asp-action="Index" class="w3-bar-item w3-button w3-right w3-hover-blue w3-text-grey"><i class="fas fa-cogs"></i></a>
+                }
             </div>
 
         </nav>
@@ -70,12 +71,12 @@
             <i class="fa fa-twitter w3-hover-opacity"></i>
             <i class="fa fa-linkedin w3-hover-opacity"></i>
         </div>
-        
-            <div class="container text-left">
 
-                &copy; 2021 - eKarte - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        
+        <div class="container text-left">
+
+            &copy; 2021 - eKarte - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+
 
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -92,6 +93,10 @@
     <script src="https://kit.fontawesome.com/e19c476714.js"></script>
     <script src="https://cdn.tiny.cloud/1/horqplxj2miqz1qpqj490qiy35aqixccxc3mbhgkylq52wgz/tinymce/5/tinymce.min.js"
             referrerpolicy="origin"></script>
+    <script src="/dist/angular-cli/runtime.js" type="module"></script>
+    <script src="/dist/angular-cli/polyfills.js" type="module"></script>
+    <script src="/dist/angular-cli/main.js" type="module"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>
