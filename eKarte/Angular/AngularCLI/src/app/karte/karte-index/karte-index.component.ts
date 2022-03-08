@@ -26,11 +26,10 @@ export class KarteIndexComponent implements OnInit {
   path: string;
 
   formData: Let;
-  placanje:boolean = false;
-  @Output() logiraniKorisnik: string;
-  @Output() letIdOutput: number;
+  
 
-
+params: string;
+cijena:string;
   constructor(
     private service: KarteService,
     private location: Location
@@ -39,7 +38,16 @@ export class KarteIndexComponent implements OnInit {
     this.location1 = location;
 
     this.path = this.location1.path().toString();
-    this.letId = this.path.replace(/\D/g, '');
+   
+    this.path = this.path.replace(",",".").replace(/[^0-9&.]/g,'');
+    
+   
+
+    this.letId = this.path.substring(0, this.path.lastIndexOf("&"));
+    this.cijena = this.path.substring(this.path.indexOf("&") +1, 10)
+    
+    
+
 
     this.service.letId = this.letId;
   }
@@ -47,6 +55,7 @@ export class KarteIndexComponent implements OnInit {
   ngOnInit(): void {
     this.service.getLet().subscribe((karta) => {
       this.formData = karta;
+      this.formData.osnovnaCijenaLeta = +this.cijena;
     });
   }
  

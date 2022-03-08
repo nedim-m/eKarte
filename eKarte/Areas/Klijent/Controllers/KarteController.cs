@@ -14,6 +14,7 @@ namespace eKarte.Areas.Klijent.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
+     
 
         public KarteController(IUnitOfWork unitOfWork
            )
@@ -23,8 +24,9 @@ namespace eKarte.Areas.Klijent.Controllers
         }
 
 
-        public IActionResult Index(int LetId)
+        public IActionResult Index(int LetId,double Cijena)
         {
+           
             return View();
         }
 
@@ -32,9 +34,11 @@ namespace eKarte.Areas.Klijent.Controllers
         public IActionResult GetLet(int Id)
         {
             var result = (_unitOfWork.Let.GetFirstOrDefault(includeProperties: "Avion,AerodromOd,AerodromDo", filter: i => i.Id == Id));
+            
             return Json(result);
 
         }
+       
 
 
 
