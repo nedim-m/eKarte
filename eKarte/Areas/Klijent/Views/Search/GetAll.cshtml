@@ -13,15 +13,17 @@
         <table id="tblData" class="table table-striped table-bordered" style="width:100%">
             @foreach (var obj in Model)
             {
-                <tr>
-                    <td width="20%">@obj.Letovi.Naziv</td>
-                    <td width="15%">@obj.Letovi.AerodromOd.Naziv</td>
-                    <td width="15%">@obj.Letovi.AerodromDo.Naziv</td>
-                    <td width="10%">@obj.Cijena</td>
-                    <td width="10%"><a class="btn btn-success">Kupi</a></td>
+            <tr>
+                <td width="20%">@obj.Letovi.Naziv</td>
+                <td width="15%">@obj.Letovi.AerodromOd.Naziv</td>
+                <td width="15%">@obj.Letovi.AerodromDo.Naziv</td>
+                <td width="10%">@obj.Cijena</td>
+                <td width="10%"><a class="btn btn-success" asp-area="Klijent" asp-controller="Karte" asp-action="Index" asp-route-LetId="@obj.Letovi.Id">Kupi</a></td>
 
 
-                </tr>
+
+
+            </tr>
             }
 
 

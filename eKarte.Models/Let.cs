@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace eKarte.Models
@@ -41,6 +42,8 @@ namespace eKarte.Models
         [Range(5,20)]
         [DisplayName("Broj članova posade")]
         public int BrojPosadeNaletu { get; set; }
+
+      
 
 
 
