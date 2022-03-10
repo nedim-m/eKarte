@@ -1,4 +1,4 @@
-<div class="container">
+<form #form="ngForm" class="container" *ngIf="!placanje">
     <h3 class="display-5 text-center ">{{formData.naziv}}</h3>
 
     <div class="form-group row">
@@ -6,7 +6,7 @@
             <label>Polazak</label>
         </div>
         <div class="col-8">
-            <input formControlName="polazak" class="form-control" [value]="formData.aerodromOd.naziv" readonly />
+            <input name="polazak" class="form-control" [value]="formData.aerodromOd.naziv" readonly />
         </div>
     </div>
     <div class="form-group row">
@@ -14,7 +14,7 @@
             <label>Odrediste</label>
         </div>
         <div class="col-8">
-            <input formControlName="odrediste" class="form-control" [value]="formData.aerodromDo.naziv" readonly />
+            <input name="odrediste" class="form-control" [value]="formData.aerodromDo.naziv" readonly />
         </div>
     </div>
     <div class="form-group row">
@@ -22,7 +22,7 @@
             <label>Avion</label>
         </div>
         <div class="col-8">
-            <input formControlName="avion" class="form-control" [value]="formData.avion.naziv" readonly />
+            <input name="avion" class="form-control" [value]="formData.avion.naziv" readonly />
         </div>
     </div>
     <div class="form-group row">
@@ -30,7 +30,7 @@
             <label>Datum</label>
         </div>
         <div class="col-8">
-            <input formControlName="datum" class="form-control" [value]="formData.datumLeta" readonly />
+            <input name="datum" class="form-control" [value]="formData.datumLeta" readonly />
         </div>
     </div>
     <div class="form-group row">
@@ -38,7 +38,7 @@
             <label>Trajanje</label>
         </div>
         <div class="col-8">
-            <input formControlName="trajane" class="form-control" [value]="formData.vrijemeLeta" readonly />
+            <input name="trajane" class="form-control" [value]="formData.vrijemeLeta" readonly />
 
         </div>
     </div>
@@ -47,21 +47,24 @@
             <label>Cijena</label>
         </div>
         <div class="col-8">
-            <input formControlName="cijena" class="form-control" [value]="formData.osnovnaCijenaLeta" readonly />
+            <input name="cijena" class="form-control" [value]="formData.osnovnaCijenaLeta" readonly />
 
         </div>
     </div>
     <div class="form-group ">
         <div class="row">
             <div class="col-12 col-md-6 pb-1">
-                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;"(click)="izlaz()">Izlaz</a>
+                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;"
+                    (click)="izlaz()">Izlaz</a>
             </div>
             <div class="col-12 col-md-6 pb-1">
 
-                <a class="btn btn-primary btn-square form-control btn-lg" style="height:50px;" >Nastavi</a>
+                <a class="btn btn-primary btn-square form-control btn-lg" style="height:50px;"
+                    (click)="nastavi()">Nastavi</a>
 
 
             </div>
         </div>
     </div>
-</div>
+</form>
+<app-placanje-form *ngIf="placanje" [formDataLet]="formData"></app-placanje-form>

@@ -43,12 +43,15 @@ namespace eKarte
 
 
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
-            services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddScoped<IEmailSender, EmailSender>();
 
             services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
             services.AddRazorPages();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

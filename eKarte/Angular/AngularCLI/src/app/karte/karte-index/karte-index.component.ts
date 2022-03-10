@@ -30,6 +30,10 @@ export class KarteIndexComponent implements OnInit {
 
 params: string;
 cijena:string;
+placanje:boolean = false;
+//@Output("logiraniKorisnik") logiraniKorisnik : any;
+//@Output("letIdOutput") letIdOutput : any;
+@Output("formDataLet") formDataLet : Let;
   constructor(
     private service: KarteService,
     private location: Location
@@ -61,6 +65,11 @@ cijena:string;
  
   izlaz(){
     window.location.href = environment.apiUrl;
+  }
+
+  nastavi()
+  {
+    this.placanje = true;
   }
   
 

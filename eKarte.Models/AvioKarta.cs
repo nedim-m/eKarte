@@ -7,8 +7,7 @@ namespace eKarte.Models
 {
     public class AvioKarta
     {
-        
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public DateTime Datum { get; set; }
 
@@ -17,6 +16,9 @@ namespace eKarte.Models
 
         public Let Let { get; set; }
 
+        public string KorisnikMail { get; set; }
+
+        
 
 
     }   

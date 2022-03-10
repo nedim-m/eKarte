@@ -1,0 +1,38 @@
+<div class="container">
+   
+    <form novalidate autocomplete="off"  (submit)="submit(ngForm)"  >
+        <div class="form-group">
+            <label>IME I PREZIME</label>
+            <input class="form-control form-control-lg" placeholder="Ime i prezime" name="cardOwnerName" required>
+        </div>
+        <div class="form-group">
+            <label>BROJ KARTICE</label>
+            <input class="form-control form-control-lg" placeholder="16 - cifri broj" name="cardNumber" required
+                maxlength="16" minlength="16">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>CCV</label>
+                <input type="password" class="form-control form-control-lg" placeholder="Sigurnosni kod"
+                    name="securityCode" required maxlength="3" minlength="3">
+            </div>
+            <div class="form-group col-md-6">
+                <label>VRIJEDI DO</label>
+                <input class="form-control form-control-lg" placeholder="MM/GG" name="expirationDate" required
+                    maxlength="5" minlength="5">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>EMAIL</label>
+            <input class="form-control form-control-lg" placeholder="Logirani korisnik" [value]="formDataLet.logiraniKorisnik"
+                name="logiraniKorisnik"   required *ngIf="formDataLet.logiraniKorisnik != null" disabled>
+                <input class="form-control form-control-lg" placeholder="Email" 
+                name="korisnikMail"  [(ngModel)]="korisnikMail"  required *ngIf="formDataLet.logiraniKorisnik == null">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-info btn-lg btn-block" type="submit" >SUBMIT</button>
+        </div>
+    </form>
+</div>

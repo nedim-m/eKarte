@@ -11,6 +11,7 @@ export interface Let {
     naziv: string;
     osnovnaCijenaLeta: number;
     brojPosadeNaletu: number;
+    logiraniKorisnik:string;
     
   }
    
@@ -31,4 +32,10 @@ export interface Let {
     kompanijaId: number;
     kompanija:string;
   
+  }
+  export class AvioKarta{
+    datum:Date;
+    letId: number;
+    korisnikMail:string;
+    cijena:number;
   }

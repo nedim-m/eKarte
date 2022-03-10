@@ -43,7 +43,8 @@ namespace eKarte.Models
         [DisplayName("Broj članova posade")]
         public int BrojPosadeNaletu { get; set; }
 
-      
+        [NotMapped]
+        public string LogiraniKorisnik { get; set; }
 
 
 

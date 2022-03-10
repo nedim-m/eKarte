@@ -6,16 +6,22 @@ import { AppComponent } from './app.component';
 import { KarteIndexComponent } from './karte/karte-index/karte-index.component';
 import { HttpClientModule } from '@angular/common/http'
 import { APP_BASE_HREF } from '@angular/common';
+import { PlacanjeFormComponent } from './placanje/placanje-form/placanje-form.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    KarteIndexComponent
+    KarteIndexComponent,
+    PlacanjeFormComponent
   ],
   imports: [
     BrowserModule,
     // AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+    
 
   ],
   providers: [{provide: APP_BASE_HREF, useValue : '/' }],
