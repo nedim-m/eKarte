@@ -37,5 +37,5 @@ export interface Let {
     datum:Date;
     letId: number;
     korisnikMail:string;
-    cijena:number;
+    konacnaCijena:number;
   }

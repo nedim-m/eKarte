@@ -1,9 +1,10 @@
 <div class="container">
-   
-    <form novalidate autocomplete="off"  (submit)="submit(ngForm)"  >
+
+    <form novalidate autocomplete="off" (submit)="submit(ngForm)" #form="ngForm">
         <div class="form-group">
             <label>IME I PREZIME</label>
-            <input class="form-control form-control-lg" placeholder="Ime i prezime" name="cardOwnerName" required>
+            <input type="text" class="form-control form-control-lg" placeholder="Ime i prezime" name="cardOwnerNam"
+                required>
         </div>
         <div class="form-group">
             <label>BROJ KARTICE</label>
@@ -26,13 +27,15 @@
 
         <div class="form-group">
             <label>EMAIL</label>
-            <input class="form-control form-control-lg" placeholder="Logirani korisnik" [value]="formDataLet.logiraniKorisnik"
-                name="logiraniKorisnik"   required *ngIf="formDataLet.logiraniKorisnik != null" disabled>
-                <input class="form-control form-control-lg" placeholder="Email" 
-                name="korisnikMail"  [(ngModel)]="korisnikMail"  required *ngIf="formDataLet.logiraniKorisnik == null">
+            <input class="form-control form-control-lg" placeholder="Logirani korisnik"
+                [value]="formDataLet.logiraniKorisnik" name="logiraniKorisnik" required
+                *ngIf="formDataLet.logiraniKorisnik != null" disabled>
+            <input type="email" class="form-control form-control-lg" placeholder="Email" name="korisnikMail"
+                [(ngModel)]="korisnikMail" required *ngIf="formDataLet.logiraniKorisnik == null" [email]="true">
         </div>
         <div class="form-group">
-            <button class="btn btn-info btn-lg btn-block" type="submit" >SUBMIT</button>
+            <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
         </div>
     </form>
 </div>
+<div class="loading" *ngIf="isSpinnerVisible">Loading&#8230;</div>

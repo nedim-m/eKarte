@@ -18,7 +18,8 @@ namespace eKarte.Models
 
         public string KorisnikMail { get; set; }
 
-        
+        public double KonacnaCijena { get; set; }
+
 
 
     }   
