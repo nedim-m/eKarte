@@ -1,3 +1,5 @@
+import { CC } from "../placanje/placanje.model";
+
 export interface Let {
     id: number;
     datumLeta: Date;
@@ -12,6 +14,7 @@ export interface Let {
     osnovnaCijenaLeta: number;
     brojPosadeNaletu: number;
     logiraniKorisnik:string;
+    
     
   }
    
@@ -38,4 +41,5 @@ export interface Let {
     letId: number;
     korisnikMail:string;
     konacnaCijena:number;
+    creditCard:CC;
   }

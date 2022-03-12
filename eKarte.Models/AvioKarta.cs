@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace eKarte.Models
@@ -19,6 +20,9 @@ namespace eKarte.Models
         public string KorisnikMail { get; set; }
 
         public double KonacnaCijena { get; set; }
+
+        [NotMapped]
+        public CreditCard CreditCard { get; set; }
 
 
 

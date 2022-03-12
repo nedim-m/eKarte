@@ -4,7 +4,9 @@ import { NgForm } from '@angular/forms';
 import { AvioKarta, Let } from 'src/app/karte/karte.model';
 import { environment } from 'src/environments/environment';
 import { PlacanjeService } from '../placanje.service';
+
 import Swal from 'sweetalert2'
+import { CC } from '../placanje.model';
 
 @Component({
   selector: 'app-placanje-form',
@@ -19,7 +21,7 @@ export class PlacanjeFormComponent implements OnInit {
 
   korisnikMail: string;
   
-  
+  creditCard:CC=new CC();
 
   avioKarta: AvioKarta = new AvioKarta();
   constructor(private placanjeService: PlacanjeService) {}
@@ -34,13 +36,16 @@ export class PlacanjeFormComponent implements OnInit {
         ? this.korisnikMail
         : this.formDataLet.logiraniKorisnik;
     this.avioKarta.konacnaCijena = this.formDataLet.osnovnaCijenaLeta;
+    this.avioKarta.creditCard=this.creditCard;
     this.spinnerShow(); 
     this.placanjeService.placanje(this.avioKarta).subscribe({
      
       next: (v) =>   setTimeout(() => {
         this.spinnerHide();
       }, 3000),
-      error: (e) => console.error("Unable to save avio karta"),
+      error: (e) =>  setTimeout(() => {
+        this.error()
+      }, 3000),
       complete: () => setTimeout(() => {
         this.success()
       }, 3000) 
@@ -52,7 +57,7 @@ export class PlacanjeFormComponent implements OnInit {
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: 'Avio karte uspješno kupljena!',
+      title: 'Avio karta uspješno kupljena!',
       showConfirmButton: false,
       timer: 3000
     }) 
@@ -60,6 +65,18 @@ export class PlacanjeFormComponent implements OnInit {
       window.location.href = environment.apiUrl;
     }, 2500);
     
+  }
+  error(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Vaša Kreditna kartica je odbijena!',
+      showConfirmButton: false,
+      timer: 3000
+    }) 
+    setTimeout(() => {
+      window.location.href = environment.apiUrl;
+    }, 2500);
   }
 
 

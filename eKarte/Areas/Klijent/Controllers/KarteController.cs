@@ -1,8 +1,10 @@
 ﻿using eKarte.DataAccess.Data.Repository.IRepository;
 using eKarte.Models;
+using eKarte.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace eKarte.Areas.Klijent.Controllers
@@ -12,15 +14,15 @@ namespace eKarte.Areas.Klijent.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<IdentityUser> _userManager;
-        
-
+        private readonly ServisPlacanje _placanjeServis;
 
         public KarteController(IUnitOfWork unitOfWork,
             UserManager<IdentityUser> userManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender, ServisPlacanje placanjeServis)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
+            _placanjeServis = placanjeServis;
             
         }
 
@@ -42,20 +44,31 @@ namespace eKarte.Areas.Klijent.Controllers
             return Json(result);
 
         }
+
+
+        
+
+
+
         [HttpPost]
         public IActionResult Placanje([FromBody] AvioKarta avioKarta)
         {
-            _unitOfWork.AvioKarta.Add(avioKarta);
-            _unitOfWork.Save();
+            if (!_placanjeServis.PlacanjeServis(avioKarta.CreditCard))
+                
+                
+                return BadRequest();
 
-            return Ok();
+            else
+            {
+
+                _unitOfWork.AvioKarta.Add(avioKarta);
+                _unitOfWork.Save();
+
+                return Ok();
+            }
         }
 
-
-     
-
-
-
-
     }
+
+ 
 }

@@ -49,6 +49,7 @@ namespace eKarte
             services.AddRazorPages();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ServisPlacanje>();
             
 
 

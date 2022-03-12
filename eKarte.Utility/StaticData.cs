@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eKarte.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,6 +25,15 @@ namespace eKarte.Utility
 
         public const string Admin = "Administrator";
         public const string User = "Korisnik";
-       
+
+
+        public static List<CreditCard> creditCards = new List<CreditCard>
+       {
+           new CreditCard("Nedim Misic","5454545454545454","10/25","000"),
+           new CreditCard("Test Test","0000000000000000","10/25","000"),
+           new CreditCard("Neko Neko","1111111111111111","11/25","111")
+       };
+
+
     }
 }
