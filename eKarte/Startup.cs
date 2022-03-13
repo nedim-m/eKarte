@@ -50,6 +50,7 @@ namespace eKarte
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ServisPlacanje>();
+            services.AddScoped<GenerisanjePdf>();
             
 
 

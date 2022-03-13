@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,16 @@ namespace eKarte.Utility
 
     {
         private readonly EmailSettings _emailSettings;
+        private readonly IWebHostEnvironment _env;
 
-        public EmailSender(IOptions<EmailSettings> emailsettings)
+        public EmailSender(IOptions<EmailSettings> emailsettings, IWebHostEnvironment env)
         {
             _emailSettings = emailsettings.Value;
+            _env = env;
         }
 
+
+        
 
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
@@ -29,9 +34,26 @@ namespace eKarte.Utility
                 Credentials = new NetworkCredential(_emailSettings.APIKey, _emailSettings.APIKeySecret),
                 EnableSsl = _emailSettings.enableSSL
             };
-            return client.SendMailAsync(
-                 new MailMessage(_emailSettings.SenderEmail, email, subject, htmlMessage) { IsBodyHtml = true }
-             );
+
+            MailMessage mail = new MailMessage
+            {
+                Subject = subject,
+                Body = htmlMessage,
+                IsBodyHtml = true,
+                To = { email },
+                From = new MailAddress(_emailSettings.SenderEmail)
+            };
+            if (System.IO.File.Exists(_env.WebRootPath + @"\karta.pdf"))
+            {
+                mail.Attachments.Add(new Attachment(_env.WebRootPath + @"\karta.pdf"));
+               
+            }
+          
+                return client.SendMailAsync(mail);
+           
+
+
         }
+    
     }
 }

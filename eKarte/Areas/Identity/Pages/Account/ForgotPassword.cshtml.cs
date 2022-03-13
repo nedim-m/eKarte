@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.AspNetCore.Hosting;
 
 namespace eKarte.Areas.Identity.Pages.Account
 {
@@ -18,11 +19,13 @@ namespace eKarte.Areas.Identity.Pages.Account
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
+        private readonly IWebHostEnvironment _env;
 
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _emailSender = emailSender;
+            _env = env;
         }
 
         [BindProperty]
@@ -56,6 +59,8 @@ namespace eKarte.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
+
+                System.IO.File.Delete(_env.WebRootPath + @"\karta.pdf");
                 await _emailSender.SendEmailAsync(
                     Input.Email,
                     "Reset Password",

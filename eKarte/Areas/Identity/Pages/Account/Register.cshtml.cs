@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using eKarte.Utility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -25,18 +26,20 @@ namespace eKarte.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IWebHostEnvironment _env;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender, RoleManager<IdentityRole> roleManager)
+            IEmailSender emailSender, RoleManager<IdentityRole> roleManager, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _env = env;
         }
 
         [BindProperty]
@@ -100,6 +103,8 @@ namespace eKarte.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
+
+                    System.IO.File.Delete(_env.WebRootPath + @"\karta.pdf");
 
                     await _emailSender.SendEmailAsync(Input.Email, "Potvrdite Vaš email",
                         $"Molim Vas potvrdite Vaš Nalog  <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>click me </a>.");
