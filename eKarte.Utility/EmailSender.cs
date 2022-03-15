@@ -43,7 +43,7 @@ namespace eKarte.Utility
                 To = { email },
                 From = new MailAddress(_emailSettings.SenderEmail)
             };
-            if (System.IO.File.Exists(_env.WebRootPath + @"\karta.pdf"))
+            if (subject == StaticData.Subject && htmlMessage == StaticData.htmlMessage)
             {
                 mail.Attachments.Add(new Attachment(_env.WebRootPath + @"\karta.pdf"));
                

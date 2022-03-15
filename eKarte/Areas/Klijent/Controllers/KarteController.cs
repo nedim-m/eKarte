@@ -73,8 +73,8 @@ namespace eKarte.Areas.Klijent.Controllers
                 var model = GetKartaForMail(avioKarta);
                _pdf.ConvertToDocument(_env, model);
 
-                _emailSender.SendEmailAsync(avioKarta.KorisnikMail, "Karta", "Poštovani, Vaša karta se nalazi u priloženom pdf fajlu.");
-                
+                _emailSender.SendEmailAsync(avioKarta.KorisnikMail, StaticData.Subject, StaticData.htmlMessage);
+
 
                 _unitOfWork.AvioKarta.Add(avioKarta);
                 _unitOfWork.Save();

@@ -16,8 +16,14 @@ namespace eKarte.Models
         [Required]
         public string Adresa { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
+
+
+        
+        
         [Required]
+        [Phone()]
         public string Telefon { get; set; }
         [Required]
         public string JMBG { get; set; }
@@ -35,6 +41,7 @@ namespace eKarte.Models
       
         public virtual TipOsoblja TipOsoblja { get; set; }
         [DisplayName("Spol")]
+        [Required(ErrorMessage = "Unesite Spol")]
         public int SpolId { get; set; }
 
         public virtual Spol Spol { get; set; }

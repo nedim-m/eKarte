@@ -37,6 +37,7 @@
                     <div class="col-8">
                         @Html.DropDownListFor(m => m.Let.AvionId, Model.AvionLista,
                                                 "- Unesite Avion -", new { @class = "form-control" })
+                        <span asp-validation-for="Let.AvionId" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -87,6 +88,7 @@
                     <div class="col-8">
                         @Html.DropDownListFor(m => m.Let.AerodromOdId, Model.AerodromOdLista,
                                                 "- Unesite polazak -", new { @class = "form-control" })
+                        <span asp-validation-for="Let.AerodromOdId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -96,6 +98,7 @@
                     <div class="col-8">
                         @Html.DropDownListFor(m => m.Let.AerodromDoId, Model.AerodromDoLista,
                                                 "- Unesite destinaciju -", new { @class = "form-control" })
+                        <span asp-validation-for="Let.AerodromDoId" class="text-danger"></span>
                     </div>
                 </div>
 

@@ -15,6 +15,7 @@ namespace eKarte.Models
         [Required]
         public string Adresa { get; set; }
         [Required]
+        [Phone]
         public string Telefon { get; set; }
 
         [Required]

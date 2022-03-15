@@ -54,7 +54,9 @@
                     <div class="col-8">
                         @Html.DropDownListFor(m => m.Stanica.GradId, Model.GradList,
                                                 "- Molimo izaberite grad -", new { @class = "form-control" })
+                        <span asp-validation-for="Stanica.GradId" class="text-danger"></span>
                     </div>
+                    
                 </div>
 
 

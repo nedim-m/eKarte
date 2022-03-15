@@ -26,6 +26,9 @@ namespace eKarte.Utility
         public const string Admin = "Administrator";
         public const string User = "Korisnik";
 
+        public const string Subject = "Karta";
+        public const string htmlMessage = "Poštovani, Vaša karta se nalazi u priloženom pdf fajlu.";
+
 
         public static List<CreditCard> creditCards = new List<CreditCard>
        {

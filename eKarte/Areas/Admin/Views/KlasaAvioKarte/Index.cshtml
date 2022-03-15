@@ -1,4 +1,4 @@
-﻿
+﻿@model int
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,9 +10,12 @@
             <div class="col-6">
                 <h2 class="text-primary">Lista Klasa Karte</h2>
             </div>
+            @if (Model < 3)
+            {
             <div class="col-6 text-right">
                 <a asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> &nbsp;  Dodaj Klasu Karte</a>
             </div>
+            }
         </div>
         <br />
         <br />

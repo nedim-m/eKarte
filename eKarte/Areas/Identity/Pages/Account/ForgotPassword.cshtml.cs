@@ -19,13 +19,13 @@ namespace eKarte.Areas.Identity.Pages.Account
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
-        private readonly IWebHostEnvironment _env;
+        
 
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender, IWebHostEnvironment env)
+        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;
-            _env = env;
+            
         }
 
         [BindProperty]
@@ -60,7 +60,7 @@ namespace eKarte.Areas.Identity.Pages.Account
                     protocol: Request.Scheme);
 
 
-                System.IO.File.Delete(_env.WebRootPath + @"\karta.pdf");
+                
                 await _emailSender.SendEmailAsync(
                     Input.Email,
                     "Reset Password",

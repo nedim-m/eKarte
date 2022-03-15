@@ -37,6 +37,7 @@ namespace eKarte.Models
 
         [Required]
         [DisplayName("Osnovna cijena karte")]
+        [Range(1,10000)]
         public double OsnovnaCijenaLeta { get; set; }
         [Required]
         [Range(5,20)]

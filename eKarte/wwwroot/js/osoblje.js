@@ -15,7 +15,7 @@ function loadDataTable() {
         "columns": [
             { "data": "ime", "width": "20%" },
             { "data": "prezime", "width": "20%" },
-            { "data": "tipOsoblja.naziv", "width": "20%" },
+            { "data": "tipOsoblja.naziv", "width": "10%" },
             { "data": "telefon", "width": "15%" },
             
             {

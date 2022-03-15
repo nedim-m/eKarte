@@ -23,7 +23,9 @@ namespace eKarte.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var i = _unitOfWork.KlasaAvioKarte.GetAll();
+            var model = i.Count();
+            return View(model);
         }
 
 
