@@ -10,6 +10,7 @@ export class PlacanjeService {
   constructor(private http: HttpClient) {}
 
   apirUrl2 = 'Klijent/Karte/Placanje';
+  
   placanje(avioKarta: AvioKarta) {
     return this.http.post(environment.apiUrl.concat(this.apirUrl2), avioKarta);
   }

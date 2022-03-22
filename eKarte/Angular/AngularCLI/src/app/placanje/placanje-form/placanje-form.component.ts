@@ -1,11 +1,10 @@
-
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AvioKarta, Let } from 'src/app/karte/karte.model';
 import { environment } from 'src/environments/environment';
 import { PlacanjeService } from '../placanje.service';
 
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { CC } from '../placanje.model';
 
 @Component({
@@ -14,14 +13,13 @@ import { CC } from '../placanje.model';
   styleUrls: ['./placanje-form.component.css'],
 })
 export class PlacanjeFormComponent implements OnInit {
-
   public isSpinnerVisible = false;
   @ViewChild('ngForm') ngForm: any;
   @Input('formDataLet') formDataLet: Let;
 
   korisnikMail: string;
-  
-  creditCard:CC=new CC();
+
+  creditCard: CC = new CC();
 
   avioKarta: AvioKarta = new AvioKarta();
   constructor(private placanjeService: PlacanjeService) {}
@@ -79,14 +77,11 @@ export class PlacanjeFormComponent implements OnInit {
     }, 2500);
   }
 
-
-  spinnerShow()
-  {
+  spinnerShow() {
     this.isSpinnerVisible = true;
   }
 
-  spinnerHide()
-  {
+  spinnerHide() {
     this.isSpinnerVisible = false;
   }
 }

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Mail;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace eKarte.Areas.Klijent.Controllers
 {
@@ -64,22 +65,30 @@ namespace eKarte.Areas.Klijent.Controllers
         public IActionResult Placanje([FromBody] AvioKarta avioKarta)
         {
             if (!_placanjeServis.PlacanjeServis(avioKarta.CreditCard))
+            {
 
 
-                return BadRequest();
+                return StatusCode(400);
+            }
 
             else
             {
                 var model = GetKartaForMail(avioKarta);
-               _pdf.ConvertToDocument(_env, model);
-
-                _emailSender.SendEmailAsync(avioKarta.KorisnikMail, StaticData.Subject, StaticData.htmlMessage);
+                _pdf.ConvertToDocument(_env, model);
 
 
                 _unitOfWork.AvioKarta.Add(avioKarta);
                 _unitOfWork.Save();
 
-                return Ok();
+                _emailSender.SendEmailAsync(avioKarta.KorisnikMail, StaticData.Subject, StaticData.htmlMessage);
+
+
+                
+
+                return StatusCode(200);
+
+
+
             }
         }
 
